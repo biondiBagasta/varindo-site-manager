@@ -26,7 +26,8 @@ class BeritaComponent extends StatelessWidget {
           },
           child: Card(
             semanticContainer: true,
-            surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+            surfaceTintColor: HexColor.fromHex(kSecondaryColor),
+            elevation: 0.8,
             color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8)
@@ -65,7 +66,7 @@ class BeritaComponent extends StatelessWidget {
                         minFontSize: 2,
                         maxFontSize: 16,
                         style: GoogleFonts.openSans(
-                          fontWeight: FontWeight.w700
+                          fontWeight: FontWeight.w600
                         ),),
                         
                       ],

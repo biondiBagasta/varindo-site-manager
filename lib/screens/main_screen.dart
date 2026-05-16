@@ -3,7 +3,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:iconsax/iconsax.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/appbars/custom_light_only_appbars.dart";
-import "package:varindo_estate_management/components/texts/main_text_component.dart";
+import "package:varindo_estate_management/components/texts/main_text_dynamic_component.dart";
 import "package:varindo_estate_management/cubit/bottom_navigation_bar_cubit.dart";
 import "package:varindo_estate_management/locator.dart";
 import "package:varindo_estate_management/screens/tabs_screen/bantuan_tab_screen.dart";
@@ -33,114 +33,160 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-
-        backgroundColor: HexColor.fromHex(kSecondaryColor),
-        shape: CircleBorder(),
-
-        child: const Icon(LucideIcons.store500, color: Colors.white,),
+      floatingActionButton: SizedBox(
+        width: 72,
+        height: 72,
+        child: FloatingActionButton(
+          onPressed: () {},
+        
+          backgroundColor: HexColor.fromHex(kPrimaryColor),
+          shape: CircleBorder(
+            side: BorderSide(
+              width: 2.8,
+              color: Colors.white
+            )
+          ),
+        
+          child: const Icon(LucideIcons.store, color: Colors.white, size: 32,),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       backgroundColor: HexColor.fromHex(kBackgroundColor),
       appBar: CustomLightOnlyAppbar(),
-      bottomNavigationBar: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
-        bloc: locator.get<BottomNavigationBarCubit>(),
-        builder: (_, state) {
-          return Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.12),
-                  blurRadius: 24,
-                  spreadRadius: 2,
-                  offset: const Offset(0, -4),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.12),
+              blurRadius: 24,
+              spreadRadius: 2,
+              offset: const Offset(0, -4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+          child: BottomAppBar(
+            // padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            shape: CircularNotchedRectangle(),
+            notchMargin: 8,
+            height: 70,
+            color: Colors.white,
+            surfaceTintColor: Colors.white,
+            
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        customBorder: CircleBorder(),
+                        onTap: () {
+                          locator.get<BottomNavigationBarCubit>().updateState(0);
+                        },
+                        child: Ink(
+                          child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
+                            bloc: locator.get<BottomNavigationBarCubit>(),
+                            builder: (_, state) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  state.currentIndex == 0 ? Icon(Iconsax.home5) : Icon(Iconsax.home),
+                                  SizedBox(height: 4,),
+                                  MainTextDynamicComponent(text: "Home", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                  
+                      InkWell(
+                        customBorder: CircleBorder(),
+                        onTap: () {
+                          locator.get<BottomNavigationBarCubit>().updateState(1);
+                        },
+                        child: Ink(
+                          child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
+                            bloc: locator.get<BottomNavigationBarCubit>(),
+                            builder: (_, state) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  state.currentIndex == 1 ? Icon(Iconsax.people5) : Icon(Iconsax.people),
+                                  SizedBox(height: 4,),
+                                  MainTextDynamicComponent(text: "Community", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                 ),
+                    
+                SizedBox(width: 48,),
+                    
+                SizedBox(width: 48,),
+            
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                  
+                      InkWell(
+                        customBorder: CircleBorder(),
+                        onTap: () {
+                          locator.get<BottomNavigationBarCubit>().updateState(2);
+                        },
+                        child: Ink(
+                          child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
+                            bloc: locator.get<BottomNavigationBarCubit>(),
+                            builder: (_, state) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  state.currentIndex == 2 ? Icon(LucideIcons.handHeart600) : Icon(LucideIcons.handHeart),
+                                  SizedBox(height: 4,),
+                                  MainTextDynamicComponent(text: "Bantuan", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                  
+                      InkWell(
+                        customBorder: CircleBorder(),
+                        onTap: () {
+                          locator.get<BottomNavigationBarCubit>().updateState(3);
+                        },
+                        child: Ink(
+                          child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
+                            bloc: locator.get<BottomNavigationBarCubit>(),
+                            builder: (_, state) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  state.currentIndex == 3 ? Icon(LucideIcons.circleUserRound600) : Icon(LucideIcons.circleUser),
+                                  SizedBox(height: 4,),
+                                  MainTextDynamicComponent(text: "Akun", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-              child: BottomAppBar(
-                shape: CircularNotchedRectangle(),
-                notchMargin: 8,
-                color: Colors.white,
-                surfaceTintColor: Colors.white,
-                
-                child: BlocBuilder(
-                  bloc: locator.get<BottomNavigationBarCubit>(),
-                  builder: (context, state) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(Iconsax.home),
-                                    SizedBox(height: 4,),
-                                    MainTextComponent(text: "Home", fontSize: 12, fontWeight: FontWeight.w500)
-                                  ],
-                                ),
-                              ),
-            
-                              GestureDetector(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(Iconsax.people),
-                                    SizedBox(height: 4,),
-                                    MainTextComponent(text: "Community", fontSize: 12, fontWeight: FontWeight.w500)
-                                  ],
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-            
-                        SizedBox(width: 48,),
-            
-                        SizedBox(width: 48,),
-                    
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(LucideIcons.handHeart),
-                                    SizedBox(height: 4,),
-                                    MainTextComponent(text: "Bantuan", fontSize: 12, fontWeight: FontWeight.w500)
-                                  ],
-                                ),
-                              ),
-                          
-                              GestureDetector(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(LucideIcons.circleUserRound),
-                                    SizedBox(height: 4,),
-                                    MainTextComponent(text: "Akun", fontSize: 12, fontWeight: FontWeight.w500)
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
-          );
-        }
+          ),
+        ),
       ),
       body: SafeArea(
         child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(

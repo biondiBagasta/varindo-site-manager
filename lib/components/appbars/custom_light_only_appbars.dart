@@ -11,8 +11,11 @@ class CustomLightOnlyAppbar extends StatelessWidget implements PreferredSizeWidg
     return AppBar(
       systemOverlayStyle: lightMainSystemOverlay,
       backgroundColor: Colors.white,
+      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
       centerTitle: true,
       toolbarHeight: 0,
+      elevation: 1,
+      scrolledUnderElevation: 1,
     );
   }
 

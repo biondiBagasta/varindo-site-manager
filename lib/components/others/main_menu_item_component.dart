@@ -18,11 +18,11 @@ class MainMenuItemComponent extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundColor: color,
-          radius: 28,
-          child: Icon(icon, color: Colors.white, size: 32,),
+          radius: 24,
+          child: Icon(icon, color: Colors.white, size: 26,),
         ),
         SizedBox(height: 6,),
-        MainTextDynamicComponent(text: label, fontSize: 14, fontWeight: FontWeight.w600, textAlign: TextAlign.center,)
+        MainTextDynamicComponent(text: label, fontSize: 12, fontWeight: FontWeight.w600, textAlign: TextAlign.center,)
       ],
     );
   }
