@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       asyncNavigationCallback: () async {
         Future.delayed(const Duration(seconds: 3)).then((_) {
           if(context.mounted) {
-            context.pushNamed("main");
+            context.pushNamed("sign-in");
           }
         });
       },

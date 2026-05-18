@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 const kPrimaryColor = "#1CAB4F";
 const kSecondaryColor = "#A41E23";
-const kBackgroundColor = "#f7f9fc";
+const kBackgroundColor = "#F6F8FA";
 const kGradientColor1 = "#1CAB4F";
 const kGradientColor2 = "#3EB24D";
 const kGradientColor3 = "#42B44D";
