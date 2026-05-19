@@ -7,7 +7,7 @@ import "package:varindo_estate_management/components/texts/main_text_dynamic_com
 import "package:varindo_estate_management/cubit/bottom_navigation_bar_cubit.dart";
 import "package:varindo_estate_management/locator.dart";
 import "package:varindo_estate_management/screens/tabs_screen/bantuan_tab_screen.dart";
-import "package:varindo_estate_management/screens/tabs_screen/community_tab_screen.dart";
+import "package:varindo_estate_management/screens/tabs_screen/information_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/home_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/profile_tab_screen.dart";
 import "package:varindo_estate_management/utils/utils.dart";
@@ -24,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final screenTabList = [
     HomeTabScreen(),
-    CommunityTabScreen(),
+    InformationTabScreen(),
     BantuanTabScreen(),
     ProfileTabScreen()
   ];
@@ -72,7 +72,8 @@ class _MainScreenState extends State<MainScreen> {
             notchMargin: 8,
             height: 70,
             color: Colors.white,
-            surfaceTintColor: Colors.white,
+            surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+            elevation: 4,
             
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,9 +116,9 @@ class _MainScreenState extends State<MainScreen> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  state.currentIndex == 1 ? Icon(Iconsax.people5) : Icon(Iconsax.people),
+                                  state.currentIndex == 1 ? Icon(Iconsax.info_circle5) : Icon(Iconsax.info_circle),
                                   SizedBox(height: 4,),
-                                  MainTextDynamicComponent(text: "Community", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                  MainTextDynamicComponent(text: "Informasi", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
                                 ],
                               );
                             },

@@ -4,6 +4,7 @@ import 'package:varindo_estate_management/screens/auth/phone_number_validation_s
 import 'package:varindo_estate_management/screens/auth/select_property_list_screen.dart';
 import 'package:varindo_estate_management/screens/auth/sign_in_screen.dart';
 import 'package:varindo_estate_management/screens/main_screen.dart';
+import 'package:varindo_estate_management/screens/varindo/ipl_screen.dart';
 import 'package:varindo_estate_management/splash_screen.dart';
 
 class AppRouter {
@@ -44,7 +45,16 @@ class AppRouter {
         name: "main",
         builder: (context, state) {
           return MainScreen();
-        }
+        },
+        routes: [
+          GoRoute(
+            path: "ipl",
+            name: "ipl",
+            builder: (context, state) {
+              return IplScreen();
+            }
+          )
+        ]
       )
     ]
   );

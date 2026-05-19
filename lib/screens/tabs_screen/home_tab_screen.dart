@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg_provider/flutter_svg_provider.dart";
+import "package:go_router/go_router.dart";
 import "package:iconsax/iconsax.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/carousel/promo_carousel.dart";
@@ -26,7 +27,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
       surfaceTintColor: HexColor.fromHex(kPrimaryColor),
       elevation: 0.8,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,8 +37,8 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 56,
+                    height: 56,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       // boxShadow: [
@@ -49,35 +50,29 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                       //   ),
                       // ],
                       image: DecorationImage(
-                        image: AssetImage("assets/varindo-logo.jpg"),
-
+                        image: AssetImage("assets/varindo-logo.png",),
+                        
                         fit: BoxFit.cover
                       )
                     ),
                   ),
-                  const SizedBox(width: 18,),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MainTextComponent(
-                          text: "Biondi Bagasta Wiko Putra", 
-                          fontSize: 16, 
-                          fontWeight: FontWeight.w600
+                        MainTextColorComponent(
+                          text: "ESTATE", 
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w600,
+                          color: HexColor.fromHex(kPrimaryColor),
                         ),
-                        SizedBox(height: 2,),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: MainTextComponent(
-                                text: "Jln. Industri, GG. Gurita No. 5, Gatep Permai, Taman Sari", 
-                                fontSize: 12, 
-                                fontWeight: FontWeight.w500,
-                                maxLines: 2,
-                                textOverflow: TextOverflow.ellipsis,
-                              )
-                            )
-                          ],
+                        MainTextColorComponent(
+                          text: "MANAGEMENT", 
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w600,
+                          color: HexColor.fromHex(kPrimaryColor),
+                          maxLines: 2,
+                          textOverflow: TextOverflow.ellipsis,
                         )
                       ],
                     )
@@ -133,15 +128,61 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: Svg("assets/counter_line.svg"),
+                        image: Svg("assets/contour_line2.svg"),
                         fit: BoxFit.cover
                       )
                     ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 56,
+                                height: 56,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: HexColor.fromHex(kPrimaryColor),
+                                    width: 0.8
+                                  ),
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/user-real.jpg")
+                                  )
+                                ),
+                              ),
+                              SizedBox(width: 12,),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MainTextComponent(text: "Biondi Bagasta Wiko Putra", fontSize: 14, fontWeight: FontWeight.w600, maxLines: 1,
+                                    isWhite: true,),
+                                    SizedBox(height: 4,),
+                                    Row(
+                                      children: [
+                                        Icon(LucideIcons.mapPin, size: 18, color: Colors.white,),
+                                        SizedBox(width: 6,),
+                                        Expanded(
+                                          child: MainTextComponent(
+                                            text: "Blok Asterdea Blok A.12, Grand Natura", 
+                                            fontSize: 12, 
+                                            fontWeight: FontWeight.w400,
+                                            maxLines: 1,
+                                            isWhite: true,
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                )
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 12,),
+                          Row(
                             children: [
                               Expanded(
                                 child: Card(
@@ -215,8 +256,8 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                               ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -284,7 +325,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           }
                         ),
                         MainMenuItemComponent(
-                          label: "Panic Button", 
+                          label: "Darurat", 
                           icon: LucideIcons.siren400, 
                           color: Colors.red, 
                           onTap: () {
@@ -300,8 +341,8 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           }
                         ),
                         MainMenuItemComponent(
-                          label: "Service Place", 
-                          icon: LucideIcons.settings400, 
+                          label: "Layanan", 
+                          icon: LucideIcons.headset400, 
                           color: Colors.blueGrey, 
                           onTap: () {
                     
@@ -310,7 +351,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                     
                         MainMenuItemComponent(
                           label: "Hobbies", 
-                          icon: LucideIcons.gamepad2, 
+                          icon: LucideIcons.gamepad2Weight400, 
                           color: Colors.blue, 
                           onTap: () {
                     
@@ -318,15 +359,15 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                         ),
                         MainMenuItemComponent(
                           label: "IPL", 
-                          icon: Iconsax.card_edit, 
+                          icon: LucideIcons.fileText400, 
                           color: HexColor.fromHex("#01a3a4"), 
                           onTap: () {
-                    
+                            context.pushNamed("ipl");
                           }
                         ),
                         MainMenuItemComponent(
                           label: "Event Warga", 
-                          icon: LucideIcons.calendarFold400, 
+                          icon: LucideIcons.calendarCheck400, 
                           color: Colors.lightBlue, 
                           onTap: () {
                     
@@ -343,7 +384,27 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                       ],
                     ),
                   ),
-                            
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MainTextComponent(
+                          text: "Security on Duty", 
+                          fontSize: 16, 
+                          fontWeight: FontWeight.w600,
+                          isWhite: false,
+                        ),
+                        MainTextColorComponent(
+                          text: "Lihat Semua", 
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w600, 
+                          color: HexColor.fromHex(kSecondaryColor)
+                        )
+                      ],
+                    ),
+                  ),
                   Card(
                     color: Colors.white,
                     surfaceTintColor: HexColor.fromHex(kPrimaryColor),
@@ -352,28 +413,8 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              MainTextComponent(
-                                text: "Security on Duty", 
-                                fontSize: 16, 
-                                fontWeight: FontWeight.w600,
-                                isWhite: false,
-                              ),
-                              MainTextColorComponent(
-                                text: "Lihat Semua", 
-                                fontSize: 14, 
-                                fontWeight: FontWeight.w600, 
-                                color: HexColor.fromHex(kSecondaryColor)
-                              )
-                            ],
-                          ),
-                          Divider(),
                           SizedBox(
                             width: constantScreenWidth,
-                            
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -387,10 +428,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                                         height: 52,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(12),
-                                          color: HexColor.fromHex(kSecondaryColor).withValues(alpha: 0.1),
+                                          color: HexColor.fromHex(kPrimaryColor),
                                           
                                         ),
-                                        child: Icon(LucideIcons.userRound500, size: 36,),
+                                        child: Icon(LucideIcons.userRound500, size: 36, color: Colors.white,),
                                       ),
                                       SizedBox(width: 12,),
                                       Expanded(
@@ -466,65 +507,57 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   ),
                             
                   SizedBox(height: 18,),
-                            
-                  Card(
-                    color: Colors.white,
-                    surfaceTintColor: HexColor.fromHex(kPrimaryColor),
-                    elevation: 0.8,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          MainTextComponent(
-                            text: "Promo Dan Aktivitas", 
-                            fontSize: 16, 
-                            fontWeight: FontWeight.w600
-                          ),
-                          SizedBox(height: 12,),
-                          PromoCarousel()
-                        ],
-                      ),
+                  
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MainTextComponent(
+                      text: "Promo Dan Aktivitas", 
+                      fontSize: 16, 
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PromoCarousel()
+                      ],
                     ),
                   ),
                             
                   SizedBox(height: 18,),
-                            
-                  Card(
-                    surfaceTintColor: HexColor.fromHex(kPrimaryColor),
-                    elevation: 0.8,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              MainTextComponent(
-                                text: "Berita", 
-                                fontSize: 16, 
-                                fontWeight: FontWeight.w600
-                              ),
-                              MainTextColorComponent(
-                                text: "Lihat Semua", 
-                                fontSize: 14, 
-                                fontWeight: FontWeight.w600, 
-                                color: HexColor.fromHex(kSecondaryColor)
-                              )
-                            ],
-                          ),
-                          
-                          const SizedBox(height: 18,),
-                          
-                          SizedBox(
-                            height: 200,
-                            child: BeritaComponent(),
-                          )
-                        ]
-                      )
+                  
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MainTextComponent(
+                          text: "Berita", 
+                          fontSize: 16, 
+                          fontWeight: FontWeight.w600
+                        ),
+                        MainTextColorComponent(
+                          text: "Lihat Semua", 
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w600, 
+                          color: HexColor.fromHex(kSecondaryColor)
+                        )
+                      ],
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          child: BeritaComponent(),
+                        )
+                      ]
+                    )
                   ),
                             
                   SizedBox(height: 36,)
@@ -544,7 +577,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
         SliverAppBar(
           pinned: true,
           automaticallyImplyLeading: false,
-          expandedHeight: 184,
+          expandedHeight: 250,
           titleSpacing: 0,
           toolbarHeight: 68,
           title: buildStickyheader(),

@@ -26,7 +26,7 @@ class BeritaComponent extends StatelessWidget {
           },
           child: Card(
             semanticContainer: true,
-            surfaceTintColor: HexColor.fromHex(kSecondaryColor),
+            surfaceTintColor: HexColor.fromHex(kPrimaryColor),
             elevation: 0.8,
             color: Colors.white,
             shape: RoundedRectangleBorder(

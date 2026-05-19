@@ -46,39 +46,41 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      MainTextComponent(
-                        text: "Sahabat Varindo", 
-                        fontSize: 18, 
-                        fontWeight: FontWeight.w600,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 6,),
-                      MainTextComponent(
-                        text: "Kelola Properti Anda, terhubung dengan tetangga, dan temukan layanan komunitas dengan mudah.", 
-                        fontSize: 14, 
-                        fontWeight: FontWeight.w500,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 18,),
-                      SignInCarousel(),
-                      SizedBox(height: 18,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          MainTextComponent(text: "Interior Terpilih", fontSize: 16, fontWeight: FontWeight.w600, textAlign: TextAlign.start,),
-                        ],
-                      ),
-                      SizedBox(height: 12,),
-                      SizedBox(
-                        height: 200,
-                        child: SigninInteriorComponent(),
-                      )
-                    ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MainTextComponent(
+                          text: "Sahabat Varindo", 
+                          fontSize: 18, 
+                          fontWeight: FontWeight.w600,
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 6,),
+                        MainTextComponent(
+                          text: "Kelola Properti Anda, terhubung dengan tetangga, dan temukan layanan komunitas dengan mudah.", 
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w500,
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 18,),
+                        SignInCarousel(),
+                        SizedBox(height: 18,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            MainTextComponent(text: "Interior Terpilih", fontSize: 16, fontWeight: FontWeight.w600, textAlign: TextAlign.start,),
+                          ],
+                        ),
+                        SizedBox(height: 12,),
+                        SizedBox(
+                          height: 200,
+                          child: SigninInteriorComponent(),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Padding(

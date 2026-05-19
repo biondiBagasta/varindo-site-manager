@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/appbars/custom_light_only_appbars.dart";
+import "package:varindo_estate_management/components/buttons/button_icon_component.dart";
+import "package:varindo_estate_management/components/others/property_list_card_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
@@ -43,7 +46,8 @@ class SelectPropertyListScreen extends StatelessWidget {
                     SizedBox(height: 18,),
                     Card(
                       color: Colors.white,
-                      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                      surfaceTintColor: Colors.white,
+                      elevation: 0.8,
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Row(
@@ -117,6 +121,43 @@ class SelectPropertyListScreen extends StatelessWidget {
                         MainTextComponent(text: "Daftar Property Anda", fontSize: 16, fontWeight: FontWeight.w600),
                         MainTextComponent(text: "3 Unit", fontSize: 14, fontWeight: FontWeight.w400),
                       ],
+                    ),
+                    SizedBox(height: 18,),
+                    PropertyItemCardComponent(
+                      image: "assets/CAROUSEL-1.jpg", 
+                      name: "Grand Nusantara", 
+                      locationName: "Blok A.12", 
+                      locationAddress: "Jl. Bung Hatta", 
+                      onTap: () {
+                        context.goNamed("main");
+                      }
+                    ),
+                    SizedBox(height: 12,),
+                    PropertyItemCardComponent(
+                      image: "assets/CAROUSEL-2.jpg", 
+                      name: "Gardenia Raya", 
+                      locationName: "Blok B.05", 
+                      locationAddress: "Jl. Gora Lingsar", 
+                      onTap: () {
+                        context.goNamed("main");
+                      }
+                    ),
+                    SizedBox(height: 12,),
+                    PropertyItemCardComponent(
+                      image: "assets/CAROUSEL-3.jpg", 
+                      name: "Taman Mandalika", 
+                      locationName: "Blok C.22", 
+                      locationAddress: "Lingkar Gerung", 
+                      onTap: () {
+                        context.goNamed("main");
+                      }
+                    ),
+                    SizedBox(height: 24,),
+                    ButtonIconComponent(
+                      onPressed: () {}, 
+                      label: "Tambah Properti", 
+                      buttonColor: HexColor.fromHex(kPrimaryColor), 
+                      icon: LucideIcons.plus
                     )
                   ],
                 ),

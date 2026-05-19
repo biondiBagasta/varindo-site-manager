@@ -13,17 +13,22 @@ class MainMenuItemComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CircleAvatar(
-          backgroundColor: color,
-          radius: 24,
-          child: Icon(icon, color: Colors.white, size: 26,),
-        ),
-        SizedBox(height: 6,),
-        MainTextDynamicComponent(text: label, fontSize: 12, fontWeight: FontWeight.w600, textAlign: TextAlign.center,)
-      ],
+    return GestureDetector(
+      onTap: () {
+        onTap();
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: color,
+            radius: 24,
+            child: Icon(icon, color: Colors.white, size: 26,),
+          ),
+          SizedBox(height: 6,),
+          MainTextDynamicComponent(text: label, fontSize: 12, fontWeight: FontWeight.w600, textAlign: TextAlign.center,)
+        ],
+      ),
     );
   }
 }
