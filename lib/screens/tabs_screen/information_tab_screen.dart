@@ -124,9 +124,8 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                 ),
                 SizedBox(height: 24,),
                 Card(
-                  elevation: 0.8,
                   color: Colors.white,
-                  surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                  surfaceTintColor: Colors.white,
                   child: Padding(
                     padding: EdgeInsets.all(12),
                     child: Column(
@@ -222,9 +221,8 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                 SizedBox(height: 24,),
                 Card(
                   margin: EdgeInsets.zero,
-                  surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                  surfaceTintColor: Colors.white,
                   color: Colors.white,
-                  elevation: 0.8,
                   child: IntrinsicHeight(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -292,7 +290,7 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                                   textAlign: TextAlign.justify,
                                   text: "Akan dilakukan pemeliharaan rutin jaringan pipa air di sektor B pada hari Sabtu 3 Mei 2026. Mohon warga menampung cadangan air mulai pukul 09.00 WITA.", 
                                   fontSize: 14, 
-                                  fontWeight: FontWeight.w500
+                                  fontWeight: FontWeight.w400
                                 ),
                                 SizedBox(height: 12,),
                                 Divider(),
@@ -332,7 +330,6 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                   margin: EdgeInsets.zero,
                   surfaceTintColor: HexColor.fromHex(kSecondaryColor),
                   color: Colors.white,
-                  elevation: 0.8,
                   child: IntrinsicHeight(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -371,9 +368,9 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                                 SizedBox(height: 12,),
                                 MainTextComponent(
                                   textAlign: TextAlign.justify,
-                                  text: "Akan dilakukan pemeliharaan rutin jaringan pipa air di sektor B pada hari Sabtu 3 Mei 2026. Mohon warga menampung cadangan air mulai pukul 09.00 WITA.", 
+                                  text: "Ditemukan kunci mobil Toyota di area parkir Taman Bermain sekitar jam 19:00 tadi malam. Bagi yang merasa kehilangan bisa hubungi saya atau lapor ke security.", 
                                   fontSize: 14, 
-                                  fontWeight: FontWeight.w500
+                                  fontWeight: FontWeight.w400
                                 ),
                                 SizedBox(height: 12,),
                                 Divider(),
@@ -418,7 +415,7 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
                 ),
                 SizedBox(height: 24,),
                 Card(
-                  surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                  surfaceTintColor: Colors.white,
                   color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.all(12),

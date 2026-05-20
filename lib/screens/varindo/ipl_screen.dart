@@ -79,7 +79,7 @@ class IplScreen extends StatelessWidget {
                     SizedBox(height: 24,),
                     Card(
                       color: Colors.white,
-                      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                      surfaceTintColor: Colors.white,
                       child: Padding(
                         padding: EdgeInsets.all(18),
                         child: Column(
@@ -90,7 +90,7 @@ class IplScreen extends StatelessWidget {
                             MainTextComponent(
                               text: "Untuk biaya perawatan fasilitas umum, pembayaran keamanan dan pembayaran petugas kebersihan.", 
                               fontSize: 14, 
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w400,
                             ),
                             SizedBox(height: 12,),
                             Container(
@@ -131,7 +131,7 @@ class IplScreen extends StatelessWidget {
                     SizedBox(height: 18,),
                     Card(
                       color: Colors.white,
-                      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                      surfaceTintColor: Colors.white,
                       child: Padding(
                         padding: EdgeInsets.all(12),
                         child: Row(
@@ -230,7 +230,7 @@ class IplScreen extends StatelessWidget {
                     SizedBox(height: 12,),
                     Card(
                       color: Colors.white,
-                      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                      surfaceTintColor: Colors.white,
                       child: Padding(
                         padding: EdgeInsets.all(12),
                         child: Row(
@@ -324,6 +324,46 @@ class IplScreen extends StatelessWidget {
                             MainTextComponent(text: FormatCurrency.convertToIdr(150000, 0), fontSize: 14, fontWeight: FontWeight.w600),
                           ],
                         ),
+                      ),
+                    ),
+                    SizedBox(height: 24,),
+                    Card(
+                      margin: EdgeInsets.zero,
+                      color: Colors.white,
+                      surfaceTintColor: Colors.white,
+                      clipBehavior: Clip.antiAlias,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: constantScreenWidth,
+                            height: 196,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/CAROUSEL-1.jpg"),
+                                fit: BoxFit.cover
+                              )
+                            ),
+                          ),
+                          SizedBox(height: 12,),
+                          Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainTextColorComponent(text: "NEW PROJECT", fontSize: 12, fontWeight: FontWeight.w500, color: HexColor.fromHex(kSecondaryColor)),
+                                SizedBox(height: 4,),
+                                MainTextComponent(text: "Revitalisasi Taman Main Gate", fontSize: 16, fontWeight: FontWeight.w600),
+                                SizedBox(height: 12,),
+                                MainTextComponent(
+                                  text: "IPL anda sudah digunakan untuk memperbaiki lampu di jalan masuk utama dan pembuatan taman bermain", 
+                                  fontSize: 14, 
+                                  fontWeight: FontWeight.w400
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     SizedBox(height: 64,)

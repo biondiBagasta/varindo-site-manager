@@ -321,7 +321,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           icon: LucideIcons.cctv400, 
                           color: Colors.orange, 
                           onTap: () {
-                    
+                            context.pushNamed("live-cctv");
                           }
                         ),
                         MainMenuItemComponent(
@@ -329,7 +329,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           icon: LucideIcons.siren400, 
                           color: Colors.red, 
                           onTap: () {
-                    
+                            context.pushNamed("darurat");
                           }
                         ),
                         MainMenuItemComponent(
@@ -370,7 +370,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           icon: LucideIcons.calendarCheck400, 
                           color: Colors.lightBlue, 
                           onTap: () {
-                    
+                            context.pushNamed("event-warga");
                           }
                         ),
                         MainMenuItemComponent(

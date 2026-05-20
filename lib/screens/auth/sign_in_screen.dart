@@ -22,7 +22,7 @@ class SignInScreen extends StatelessWidget {
         child: Material(
           color: Colors.white,
           surfaceTintColor: HexColor.fromHex(kPrimaryColor),
-          elevation: 0.8,
+          elevation: 1,
           child: SizedBox(
             width: constantScreenWidth,
             height: constantScreenHeight,

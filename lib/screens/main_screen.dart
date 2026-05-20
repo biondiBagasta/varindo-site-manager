@@ -6,7 +6,7 @@ import "package:varindo_estate_management/components/appbars/custom_light_only_a
 import "package:varindo_estate_management/components/texts/main_text_dynamic_component.dart";
 import "package:varindo_estate_management/cubit/bottom_navigation_bar_cubit.dart";
 import "package:varindo_estate_management/locator.dart";
-import "package:varindo_estate_management/screens/tabs_screen/bantuan_tab_screen.dart";
+import "package:varindo_estate_management/screens/tabs_screen/layanan_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/information_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/home_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/profile_tab_screen.dart";
@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   final screenTabList = [
     HomeTabScreen(),
     InformationTabScreen(),
-    BantuanTabScreen(),
+    LayananTabScreen(),
     ProfileTabScreen()
   ];
 
@@ -150,9 +150,9 @@ class _MainScreenState extends State<MainScreen> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  state.currentIndex == 2 ? Icon(LucideIcons.handHeart600) : Icon(LucideIcons.handHeart),
+                                  state.currentIndex == 2 ? Icon(Iconsax.element_25) : Icon(Iconsax.element_2),
                                   SizedBox(height: 4,),
-                                  MainTextDynamicComponent(text: "Bantuan", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
+                                  MainTextDynamicComponent(text: "Layanan", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
                                 ],
                               );
                             },
@@ -172,7 +172,7 @@ class _MainScreenState extends State<MainScreen> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  state.currentIndex == 3 ? Icon(LucideIcons.circleUserRound600) : Icon(LucideIcons.circleUser),
+                                  state.currentIndex == 3 ? Icon(Icons.account_circle) : Icon(Icons.account_circle_outlined),
                                   SizedBox(height: 4,),
                                   MainTextDynamicComponent(text: "Akun", fontSize: 12, fontWeight: FontWeight.w500, maxLines: 1,)
                                 ],
@@ -200,35 +200,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
-// NavigationBar(
-//                 elevation: 20,
-//                 selectedIndex: state.currentIndex,
-//                 onDestinationSelected: (index) {
-//                   locator.get<BottomNavigationBarCubit>().updateState(index);
-//                 },
-//                 backgroundColor: Colors.white,
-//                 indicatorColor: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.5),
-//                 destinations: [
-//                   NavigationDestination(
-//                     icon: Icon(Iconsax.home),
-//                     selectedIcon: Icon(Iconsax.home5, color: HexColor.fromHex(kSecondaryColor),),
-//                     label: "Home",
-//                   ),
-//                   NavigationDestination(
-//                     icon: Icon(LucideIcons.usersRound),
-//                     selectedIcon: Icon(LucideIcons.usersRound600, color: HexColor.fromHex(kSecondaryColor),),
-//                     label: "Community",
-//                   ),
-//                   NavigationDestination(
-//                     icon: Icon(LucideIcons.handHeart),
-//                     selectedIcon: Icon(LucideIcons.handHeart600, color: HexColor.fromHex(kSecondaryColor),),
-//                     label: "Bantuan",
-//                   ),
-//                   NavigationDestination(
-//                     icon: Icon(LucideIcons.circleUserRound),
-//                     selectedIcon: Icon(LucideIcons.circleUserRound600, color: HexColor.fromHex(kSecondaryColor),),
-//                     label: "Profil",
-//                   ),
-//                 ],
-//               ),

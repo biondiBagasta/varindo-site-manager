@@ -20,7 +20,7 @@ class SelectPropertyListScreen extends StatelessWidget {
         child: Material(
           surfaceTintColor: HexColor.fromHex(kPrimaryColor),
           color: Colors.white,
-          elevation: 0.8,
+          elevation: 1,
           child: SizedBox(
             width: constantScreenWidth,
             height: constantScreenHeight,

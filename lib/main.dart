@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:varindo_estate_management/app_router.dart';
 import 'package:varindo_estate_management/locator.dart';
 import 'package:varindo_estate_management/utils/utils.dart';
@@ -6,7 +7,10 @@ import 'package:varindo_estate_management/utils/utils.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {

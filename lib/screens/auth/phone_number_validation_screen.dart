@@ -34,7 +34,7 @@ class _PhoneNumberValidationScreenState extends State<PhoneNumberValidationScree
         child: Material(
           color: Colors.white,
           surfaceTintColor: HexColor.fromHex(kPrimaryColor),
-          elevation: 0.8,
+          elevation: 1,
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
