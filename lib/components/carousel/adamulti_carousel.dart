@@ -3,15 +3,15 @@ import "package:flutter/material.dart";
 import "package:smooth_page_indicator/smooth_page_indicator.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class PromoCarousel extends StatefulWidget {
+class AdamultiCarousel extends StatefulWidget {
 
-  const PromoCarousel({ super.key });
+  const AdamultiCarousel({ super.key });
 
   @override
-  State<PromoCarousel> createState() => _PromoCarouselState();
+  State<AdamultiCarousel> createState() => _AdamultiCarouselState();
 }
 
-class _PromoCarouselState extends State<PromoCarousel> {
+class _AdamultiCarouselState extends State<AdamultiCarousel> {
 
   int currentIndicatorIndex = 0;
 
@@ -21,14 +21,14 @@ class _PromoCarouselState extends State<PromoCarousel> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CarouselSlider.builder(
-          itemCount: 3,
+          itemCount: 2,
           itemBuilder: (context2, index, pageIndex) {
             return Container(
               width: constantScreenWidth,
               margin: const EdgeInsets.symmetric(horizontal: 5.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/CAROUSEL-${index + 1}.jpg"),
+                  image: AssetImage("assets/adamulti-${index + 1}.jpg"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(18)),
@@ -48,14 +48,14 @@ class _PromoCarouselState extends State<PromoCarousel> {
         SizedBox(height: 12,),
         AnimatedSmoothIndicator(
           activeIndex: currentIndicatorIndex, 
-          count: 3,
+          count: 2,
           effect: ExpandingDotsEffect(
             dotHeight: 8,
             dotWidth: 8,
             dotColor: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.4),
             activeDotColor: HexColor.fromHex(kPrimaryColor)
           ),
-        )
+        ),
       ],
     );
   }

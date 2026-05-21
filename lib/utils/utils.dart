@@ -67,3 +67,26 @@ class FormatCurrency {
     return currencyFormat.format(number);
   }
 }
+
+// Bagian Server
+const urlAuth = "desktop/api";
+const urlCore = "apimpn/apps/v9";
+const urlV8 = "apimpn/apps/v8";
+const urlSocket = "desktop";
+const urlFile = "desktop/api/files";
+const urlCustomBiller = "9111/api";
+const urlDynamicBiller = "payment/api";
+const urlCoreMPN = "apimpn/apps/v9";
+
+const appVersionName = "ADAMULTI-ANDROID-GANJIL";
+
+
+const serverList = [
+  "https://app.adamulti.com/",
+  "https://app.ada8kurir.com/",
+];
+
+const serverListName = [
+  "Server 1",
+  "Server 2"
+];

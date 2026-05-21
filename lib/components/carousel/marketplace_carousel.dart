@@ -3,15 +3,15 @@ import "package:flutter/material.dart";
 import "package:smooth_page_indicator/smooth_page_indicator.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class PromoCarousel extends StatefulWidget {
+class MarketplaceCarousel extends StatefulWidget {
 
-  const PromoCarousel({ super.key });
+  const MarketplaceCarousel({ super.key });
 
   @override
-  State<PromoCarousel> createState() => _PromoCarouselState();
+  State<MarketplaceCarousel> createState() => _MarketplaceCarouselState();
 }
 
-class _PromoCarouselState extends State<PromoCarousel> {
+class _MarketplaceCarouselState extends State<MarketplaceCarousel> {
 
   int currentIndicatorIndex = 0;
 
@@ -28,7 +28,7 @@ class _PromoCarouselState extends State<PromoCarousel> {
               margin: const EdgeInsets.symmetric(horizontal: 5.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/CAROUSEL-${index + 1}.jpg"),
+                  image: AssetImage("assets/food-${index + 1}.jpg"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(18)),

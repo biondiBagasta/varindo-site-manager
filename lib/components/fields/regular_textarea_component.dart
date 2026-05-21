@@ -40,7 +40,7 @@ class RegularTextareaComponent extends StatelessWidget {
               children: [
                 Container(
                   width: 6,
-                  height: 48,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: HexColor.fromHex(kPrimaryColor),
                     borderRadius: BorderRadius.only(

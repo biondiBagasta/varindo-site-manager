@@ -20,7 +20,7 @@ class LiveCctvItemComponent extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(12),
           width: constantScreenWidth,
-          height: 250,
+          height: 200,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image),

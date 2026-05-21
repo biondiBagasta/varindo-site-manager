@@ -277,13 +277,13 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(16),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha:  0.08),
-            blurRadius: 16,
-            offset: const Offset(0, -4),
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black.withValues(alpha:  0.08),
+        //     blurRadius: 16,
+        //     offset: const Offset(0, -4),
+        //   ),
+        // ],
       ),
       child: SingleChildScrollView(
         child: Column(
