@@ -1,9 +1,7 @@
 import "package:avatar_glow/avatar_glow.dart";
 import "package:flutter/material.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
-import "package:timelines_plus/timelines_plus.dart";
 import "package:varindo_estate_management/components/appbars/custom_appbar_back_light.dart";
-import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
@@ -154,117 +152,223 @@ class _DaruratScreenState extends State<DaruratScreen> {
                       ],
                     ),
                     SizedBox(height: 24,),
+                    Row(
+                      children: [
+                        MainTextComponent(text: "Security yang Bertugas", fontSize: 16, fontWeight: FontWeight.w600),
+                      ],
+                    ),
+                    SizedBox(height: 18,),
                     Card(
                       color: Colors.white,
-                      surfaceTintColor: Colors.white,
+                      surfaceTintColor: HexColor.fromHex(kPrimaryColor),
+                      elevation: 0.8,
                       child: Padding(
-                        padding: EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                MainTextComponent(text: "Status Respons", fontSize: 16, fontWeight: FontWeight.w600),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: HexColor.fromHex(kSecondaryColor).withValues(alpha: 0.16),
-                                    borderRadius: BorderRadius.circular(12)
-                                  ),
-                                  child: MainTextColorComponent(text: "Siaga", fontSize: 14, fontWeight: FontWeight.w500, color: HexColor.fromHex(kSecondaryColor),),
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 12,),
                             SizedBox(
                               width: constantScreenWidth,
-                              height: 160,
                               child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: Timeline.tileBuilder(
-                                      theme: TimelineThemeData(
-                                        nodePosition: 0,
-                                        indicatorTheme: const IndicatorThemeData(
-                                          size: 16,
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 52,
+                                          height: 52,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(12),
+                                            color: HexColor.fromHex(kPrimaryColor),
+                                            
+                                          ),
+                                          child: Icon(LucideIcons.userRound500, size: 36, color: Colors.white,),
                                         ),
-                                        connectorTheme: const ConnectorThemeData(
-                                          thickness: 2,
-                                        ),
-                                      ),
-                                      builder: TimelineTileBuilder.connected(
-                                        itemCount: timelineData.length,
-                                    
-                                        connectorBuilder: (_, index, __) {
-                                          return SolidLineConnector(
-                                            color: Colors.grey.shade300,
-                                          );
-                                        },
-                                    
-                                        indicatorBuilder: (_, index) {
-                                          return DotIndicator(
-                                            color: timelineData[index]["isDone"]
-                                                ? Colors.green
-                                                : Colors.grey,
-                                          );
-                                        },
-                                    
-                                        contentsBuilder: (_, index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 16,
-                                              bottom: 24,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                    
-                                                Text(
-                                                  timelineData[index]["title"],
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
+                                        SizedBox(width: 12,),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              MainTextComponent(
+                                                text: "Biban Azimuh", 
+                                                fontSize: 14, 
+                                                fontWeight: FontWeight.w500,
+                                                isWhite: false,
+                                              ),
+                                              SizedBox(height: 2,),
+                                              MainTextComponent(
+                                                text: "ID : 52710102xxxx", 
+                                                fontSize: 12, 
+                                                fontWeight: FontWeight.w500,
+                                                isWhite: false,
+                                              ),
+                                              const SizedBox(height: 2,),
+                                              Row(
+                                                children: [
+                                                  Icon(LucideIcons.clock, size: 18,),
+                                                  SizedBox(width: 6,),
+                                                  MainTextComponent(
+                                                    text: "28 Apr 2025, 08:00 - 19:59", 
+                                                    fontSize: 12, 
+                                                    fontWeight: FontWeight.w400,
+                                                    isWhite: false,
                                                   ),
-                                                ),
-                                    
-                                                const SizedBox(height: 4),
-                                    
-                                                Text(
-                                                  timelineData[index]["date"],
-                                                  style: TextStyle(
-                                                    color: Colors.grey.shade600,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                  SizedBox(width: 8,),
-                                  Container(
-                                    width: 72,
-                                    height: 72,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(
-                                          "https://assets.ujet.cx/files/mobile%20banking%20customer%20support.png"
-                                        )
-                                      )
-                                    ),
+                                  const SizedBox(width: 12,),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightBlue,
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        padding: EdgeInsets.all(8),
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(LucideIcons.cloudSun500, size: 18, color: Colors.yellow,),
+                                            SizedBox(width: 2,),
+                                            MainTextComponent(
+                                              text: "Shift Pagi", 
+                                              fontSize: 10, 
+                                              fontWeight: FontWeight.w600,
+                                              isWhite: true,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      
+                                    ],
                                   )
+                                            
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 64,)
+                            )
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    // Card(
+                    //   color: Colors.white,
+                    //   surfaceTintColor: Colors.white,
+                    //   child: Padding(
+                    //     padding: EdgeInsets.all(18),
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           crossAxisAlignment: CrossAxisAlignment.center,
+                    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //           children: [
+                    //             MainTextComponent(text: "Status Respons", fontSize: 16, fontWeight: FontWeight.w600),
+                    //             Container(
+                    //               padding: EdgeInsets.all(8),
+                    //               decoration: BoxDecoration(
+                    //                 color: HexColor.fromHex(kSecondaryColor).withValues(alpha: 0.16),
+                    //                 borderRadius: BorderRadius.circular(12)
+                    //               ),
+                    //               child: MainTextColorComponent(text: "Siaga", fontSize: 14, fontWeight: FontWeight.w500, color: HexColor.fromHex(kSecondaryColor),),
+                    //             )
+                    //           ],
+                    //         ),
+                    //         SizedBox(height: 12,),
+                    //         SizedBox(
+                    //           width: constantScreenWidth,
+                    //           height: 160,
+                    //           child: Row(
+                    //             children: [
+                    //               Expanded(
+                    //                 child: Timeline.tileBuilder(
+                    //                   theme: TimelineThemeData(
+                    //                     nodePosition: 0,
+                    //                     indicatorTheme: const IndicatorThemeData(
+                    //                       size: 16,
+                    //                     ),
+                    //                     connectorTheme: const ConnectorThemeData(
+                    //                       thickness: 2,
+                    //                     ),
+                    //                   ),
+                    //                   builder: TimelineTileBuilder.connected(
+                    //                     itemCount: timelineData.length,
+                                    
+                    //                     connectorBuilder: (_, index, __) {
+                    //                       return SolidLineConnector(
+                    //                         color: Colors.grey.shade300,
+                    //                       );
+                    //                     },
+                                    
+                    //                     indicatorBuilder: (_, index) {
+                    //                       return DotIndicator(
+                    //                         color: timelineData[index]["isDone"]
+                    //                             ? Colors.green
+                    //                             : Colors.grey,
+                    //                       );
+                    //                     },
+                                    
+                    //                     contentsBuilder: (_, index) {
+                    //                       return Padding(
+                    //                         padding: const EdgeInsets.only(
+                    //                           left: 16,
+                    //                           bottom: 24,
+                    //                         ),
+                    //                         child: Column(
+                    //                           crossAxisAlignment: CrossAxisAlignment.start,
+                    //                           children: [
+                                    
+                    //                             Text(
+                    //                               timelineData[index]["title"],
+                    //                               style: const TextStyle(
+                    //                                 fontSize: 16,
+                    //                                 fontWeight: FontWeight.w600,
+                    //                               ),
+                    //                             ),
+                                    
+                    //                             const SizedBox(height: 4),
+                                    
+                    //                             Text(
+                    //                               timelineData[index]["date"],
+                    //                               style: TextStyle(
+                    //                                 color: Colors.grey.shade600,
+                    //                               ),
+                    //                             ),
+                    //                           ],
+                    //                         ),
+                    //                       );
+                    //                     },
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //               SizedBox(width: 8,),
+                    //               Container(
+                    //                 width: 72,
+                    //                 height: 72,
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(12),
+                    //                   image: DecorationImage(
+                    //                     fit: BoxFit.cover,
+                    //                     image: NetworkImage(
+                    //                       "https://assets.ujet.cx/files/mobile%20banking%20customer%20support.png"
+                    //                     )
+                    //                   )
+                    //                 ),
+                    //               )
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         SizedBox(height: 64,)
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
