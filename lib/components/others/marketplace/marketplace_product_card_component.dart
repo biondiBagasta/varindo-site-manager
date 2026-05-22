@@ -38,41 +38,48 @@ class MarketplaceProductCardComponent extends StatelessWidget {
               ),
             ),
             SizedBox(height: 6,),
-            Padding(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MainTextComponent(text: name, fontSize: 14, fontWeight: FontWeight.w500, maxLines: 2,),
-                  SizedBox(height: 4,),
-                  MainTextComponent(text: shopName, fontSize: 12, fontWeight: FontWeight.w400),
-                  SizedBox(height: 8,),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: MainTextDynamicComponent(
-                          text: FormatCurrency.convertToIdr(price, 0), 
-                          fontSize: 14, 
-                          fontWeight: FontWeight.w600,
-                          maxLines: 1,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MainTextComponent(text: name, fontSize: 14, fontWeight: FontWeight.w500, maxLines: 2,),
+                        SizedBox(height: 4,),
+                        MainTextComponent(text: shopName, fontSize: 12, fontWeight: FontWeight.w400),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: MainTextDynamicComponent(
+                            text: FormatCurrency.convertToIdr(price, 0), 
+                            fontSize: 14, 
+                            fontWeight: FontWeight.w600,
+                            maxLines: 1,
+                          )
+                        ),
+                        SizedBox(width: 6,),
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: HexColor.fromHex(kPrimaryColor),
+                            borderRadius: BorderRadius.circular(12)
+                          ),
+                          child: Center(
+                            child: Icon(Icons.add_shopping_cart, color: Colors.white,),
+                          ),
                         )
-                      ),
-                      SizedBox(width: 6,),
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: HexColor.fromHex(kPrimaryColor),
-                          borderRadius: BorderRadius.circular(12)
-                        ),
-                        child: Center(
-                          child: Icon(Icons.add_shopping_cart, color: Colors.white,),
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             )
           ],

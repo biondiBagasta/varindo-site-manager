@@ -63,7 +63,7 @@ class _LayananTabScreenState extends State<LayananTabScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(18),
+      padding: EdgeInsets.only(left: 18, right: 18, top: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -36,7 +36,7 @@ class _MarketplaceTabScreenState extends State<MarketplaceTabScreen> {
       length: 3,
       initialIndex: 0,
       child: Padding(
-        padding: EdgeInsets.all(18),
+        padding: EdgeInsets.only(top: 18, right: 18, left: 18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

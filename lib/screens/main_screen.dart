@@ -64,8 +64,8 @@ class _MainScreenState extends State<MainScreen> {
           notchMargin: 8,
           height: 70,
           color: Colors.white,
-          surfaceTintColor: HexColor.fromHex(kPrimaryColor),
-          elevation: 4,
+          surfaceTintColor: Colors.white,
+          elevation: 1,
           
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

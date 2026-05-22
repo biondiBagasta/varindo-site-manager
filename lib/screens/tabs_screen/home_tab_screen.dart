@@ -9,6 +9,8 @@ import "package:varindo_estate_management/components/others/main_menu_item_compo
 import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_dynamic_component.dart";
+import "package:varindo_estate_management/cubit/bottom_navigation_bar_cubit.dart";
+import "package:varindo_estate_management/locator.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
 class HomeTabScreen extends StatefulWidget {
@@ -193,7 +195,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Icon(LucideIcons.key600, color: HexColor.fromHex(kSecondaryColor), size: 32,),
+                                        Icon(LucideIcons.idCardLanyard, color: HexColor.fromHex(kSecondaryColor), size: 32,),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,36 +222,41 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                               ),
                               SizedBox(width: 12,),
                               Expanded(
-                                child: Card(
-                                  color: Colors.white,
-                                  surfaceTintColor: HexColor.fromHex(kSecondaryColor),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Iconsax.card_edit5, color: HexColor.fromHex(kSecondaryColor), size: 32,),
-                                        SizedBox(width: 8,),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            MainTextDynamicComponent(
-                                              text: "Tagihan (IPL)", 
-                                              fontSize: 12, 
-                                              fontWeight: FontWeight.w400,
-                                              isWhite: false,
-                                            ),
-                                            const SizedBox(height: 2,),
-                                            MainTextDynamicComponent(
-                                              text: FormatCurrency.convertToIdr(150000, 0), 
-                                              fontSize: 14, 
-                                              fontWeight: FontWeight.w600,
-                                              maxLines: 1,
-                                              isWhite: false,
-                                            ),
-                                          ],
-                                        )
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    context.pushNamed("ipl");
+                                  },
+                                  child: Card(
+                                    color: Colors.white,
+                                    surfaceTintColor: HexColor.fromHex(kSecondaryColor),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(LucideIcons.filePenLine, color: HexColor.fromHex(kSecondaryColor), size: 32,),
+                                          SizedBox(width: 8,),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              MainTextDynamicComponent(
+                                                text: "Tagihan (IPL)", 
+                                                fontSize: 12, 
+                                                fontWeight: FontWeight.w400,
+                                                isWhite: false,
+                                              ),
+                                              const SizedBox(height: 2,),
+                                              MainTextDynamicComponent(
+                                                text: FormatCurrency.convertToIdr(150000, 0), 
+                                                fontSize: 14, 
+                                                fontWeight: FontWeight.w600,
+                                                maxLines: 1,
+                                                isWhite: false,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -337,7 +344,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           icon: LucideIcons.store400, 
                           color: Colors.green, 
                           onTap: () {
-                    
+                            locator.get<BottomNavigationBarCubit>().updateState(4);
                           }
                         ),
                         MainMenuItemComponent(
@@ -345,7 +352,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                           icon: LucideIcons.headset400, 
                           color: Colors.blueGrey, 
                           onTap: () {
-                    
+                            locator.get<BottomNavigationBarCubit>().updateState(2);
                           }
                         ),
                     

@@ -50,7 +50,7 @@ class RegularTextFieldComponent extends StatelessWidget {
             ),
             contentPadding: const EdgeInsets.all(8),
             filled: true,
-            fillColor: Colors.transparent,
+            fillColor: Colors.white,
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8)),
               borderSide: BorderSide(

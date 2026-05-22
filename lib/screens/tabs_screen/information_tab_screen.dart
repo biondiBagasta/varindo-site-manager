@@ -42,7 +42,7 @@ class _InformationTabScreenState extends State<InformationTabScreen> with Single
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(18),
+      padding: EdgeInsets.only(left: 18, right: 18, top: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
