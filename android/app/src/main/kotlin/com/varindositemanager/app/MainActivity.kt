@@ -1,4 +1,4 @@
-package com.example.varindo_estate_management
+package com.varindositemanager.app
 
 import io.flutter.embedding.android.FlutterActivity
 

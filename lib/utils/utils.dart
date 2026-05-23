@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-const kPrimaryColor = "#1CAB4F";
+const kPrimaryColor = "#315C49";
 const kSecondaryColor = "#A41E23";
 const kInfoColor = "#45aaf2";
 const kBackgroundColor = "#F6F8FA";
 const kGradientColor1 = "#1CAB4F";
 const kGradientColor2 = "#3EB24D";
 const kGradientColor3 = "#42B44D";
+const kLightTextColor ="#6B7280";
 
 const kTextColor = "#2d3436";
 

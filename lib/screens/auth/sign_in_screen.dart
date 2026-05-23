@@ -1,19 +1,31 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:google_fonts/google_fonts.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/appbars/custom_light_only_appbars.dart";
-import "package:varindo_estate_management/components/buttons/button_icon_component.dart";
-import "package:varindo_estate_management/components/buttons/outlined_button_icon_component.dart";
-import "package:varindo_estate_management/components/carousel/sign_in_carousel.dart";
-import "package:varindo_estate_management/components/others/sign_in_interior_component.dart";
-import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
+import "package:varindo_estate_management/components/buttons/button_component.dart";
+import "package:varindo_estate_management/components/fields/regular_textfield_icon_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
 
   const SignInScreen({ super.key });
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,87 +38,84 @@ class SignInScreen extends StatelessWidget {
           child: SizedBox(
             width: constantScreenWidth,
             height: constantScreenHeight,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/varindo-logo.png", width: 48, height: 48,),
-                      MainTextColorComponent(text: "Varindo Estate", fontSize: 18, fontWeight: FontWeight.w600, color: HexColor.fromHex(kPrimaryColor)),
-                      GestureDetector(
-                        onTap: () {
-                          
-                        },
-                        child: Icon(LucideIcons.circleQuestionMark),
+                      Container(
+                        width: 42,
+                        height: 42,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.2)
+                        ),
+                        child: Center(
+                          child: Icon(Icons.construction, color: HexColor.fromHex(kPrimaryColor),),
+                        ),
                       ),
+                      SizedBox(width: 12,),
+                      MainTextComponent(text: "Varindo Site Manager", fontSize: 22, fontWeight: FontWeight.w600)
                     ],
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        MainTextComponent(
-                          text: "Sahabat Varindo", 
-                          fontSize: 18, 
-                          fontWeight: FontWeight.w600,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 6,),
-                        MainTextComponent(
-                          text: "Kelola Properti Anda, terhubung dengan tetangga, dan temukan layanan komunitas dengan mudah.", 
-                          fontSize: 14, 
-                          fontWeight: FontWeight.w500,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 18,),
-                        SignInCarousel(),
-                        SizedBox(height: 18,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            MainTextComponent(text: "Interior Terpilih", fontSize: 16, fontWeight: FontWeight.w600, textAlign: TextAlign.start,),
-                          ],
-                        ),
-                        SizedBox(height: 12,),
-                        SizedBox(
-                          height: 200,
-                          child: SigninInteriorComponent(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(18),
-                  child: Column(
+                  Column(
                     children: [
-                      ButtonIconComponent(
+                      Image.asset('assets/varindo-logo.png', width: 96,),
+                      SizedBox(height: 8,),
+                      MainTextComponent(text: "PT. VARINDO LOMBOK INTI", fontSize: 22, fontWeight: FontWeight.w600),
+                      SizedBox(height: 2,),
+                      Text(
+                        "Developer & Real Estate",
+                        style: GoogleFonts.inter(
+                          color: HexColor.fromHex(kTextColor),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic
+                        ),
+                      ),
+                      SizedBox(height: 18,),
+                      RegularTextfieldIconComponent(
+                        label: "Email", 
+                        hint: "Masukkan Email", 
+                        controller: emailController, 
+                        validationMessage: "*Email harus diisi.", 
+                        icon: LucideIcons.mail
+                      ),
+                      SizedBox(height: 18,),
+                      RegularTextfieldIconComponent(
+                        label: "Password", 
+                        hint: "Masukkan Password", 
+                        controller: passwordController, 
+                        validationMessage: "*Password harus diisi.", 
+                        icon: LucideIcons.lock,
+                        isObscure: true,
+                      ),
+                      SizedBox(height: 24,),
+                      ButtonComponent(
                         onPressed: () {
-                          context.pushNamed("phone-number-validation");
+                          context.pushNamed("main");
                         }, 
                         label: "Login", 
-                        buttonColor: HexColor.fromHex(kPrimaryColor), 
-                        icon: LucideIcons.logIn
-                      ),
-                      SizedBox(height: 12,),
-                      OutlinedButtonIconComponent(
-                        onPressed: () {}, 
-                        label: "Register", 
-                        buttonColor: HexColor.fromHex(kPrimaryColor), 
-                        icon: LucideIcons.userRoundPlus, 
-                        labelColor: HexColor.fromHex(kPrimaryColor)
+                        buttonColor: HexColor.fromHex(kPrimaryColor)
                       )
                     ],
                   ),
-                )
-              ],
+                  Column(
+                    children: [
+                      Divider(),
+                      MainTextComponent(
+                        text: "Sistem Internal Varindo dan Akses Terbatas", 
+                        fontSize: 14, 
+                        fontWeight: FontWeight.w500
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         )
