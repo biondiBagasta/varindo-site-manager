@@ -10,6 +10,7 @@ const kGradientColor1 = "#1CAB4F";
 const kGradientColor2 = "#3EB24D";
 const kGradientColor3 = "#42B44D";
 const kLightTextColor ="#6B7280";
+const kSuccessColor = "#1abc9c";
 
 const kTextColor = "#2d3436";
 
@@ -91,3 +92,10 @@ const serverListName = [
   "Server 1",
   "Server 2"
 ];
+
+String formatDateToIndonesian(DateTime date) {
+  return DateFormat(
+    'd MMMM yyyy',
+    'id_ID',
+  ).format(DateTime.parse('2026-05-27 00:00:00.000'));
+}

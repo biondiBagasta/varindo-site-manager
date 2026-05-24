@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
               NavigationDestination(
                 selectedIcon: Icon(Icons.groups_2, color: Colors.white,),
                 icon: Icon(Icons.groups_2_outlined), 
-                label: "Kluster"
+                label: "Komplain"
               ),
               NavigationDestination(
                 selectedIcon: Icon(Icons.account_circle, color: Colors.white,),

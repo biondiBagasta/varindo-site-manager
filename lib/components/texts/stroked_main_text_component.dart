@@ -27,7 +27,7 @@ class StrokedMainTextComponent extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: fontSize,
             fontWeight: fontWeight,
-            foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 0.8..color = Colors.black
+            foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 1..color = Colors.black
           ),
         ),
         Text(

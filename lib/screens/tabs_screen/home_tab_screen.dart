@@ -252,7 +252,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 MainTextComponent(
-                  text: "Security on Duty", 
+                  text: "Daftar Cluster", 
                   fontSize: 16, 
                   fontWeight: FontWeight.w600,
                   isWhite: false,

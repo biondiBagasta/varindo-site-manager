@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:varindo_estate_management/app_router.dart';
 import 'package:varindo_estate_management/locator.dart';
 import 'package:varindo_estate_management/utils/utils.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initializeDateFormatting('id_ID', null);
   setupLocator();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
     .then((_) {
