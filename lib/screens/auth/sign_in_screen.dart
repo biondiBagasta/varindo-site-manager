@@ -66,13 +66,13 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Image.asset('assets/varindo-logo.png', width: 96,),
                       SizedBox(height: 8,),
-                      MainTextComponent(text: "PT. VARINDO LOMBOK INTI", fontSize: 22, fontWeight: FontWeight.w600),
+                      MainTextComponent(text: "PT. VARINDO LOMBOK INTI", fontSize: 16, fontWeight: FontWeight.w600),
                       SizedBox(height: 2,),
                       Text(
                         "Developer & Real Estate",
                         style: GoogleFonts.inter(
                           color: HexColor.fromHex(kTextColor),
-                          fontSize: 18,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.italic
                         ),

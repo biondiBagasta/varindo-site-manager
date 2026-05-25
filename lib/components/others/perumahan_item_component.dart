@@ -4,9 +4,9 @@ import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class ClusterItemComponent extends StatefulWidget {
+class PerumahanItemComponent extends StatefulWidget {
 
-  const ClusterItemComponent({
+  const PerumahanItemComponent({
     super.key,
     required this.name,
     required this.location,
@@ -26,10 +26,10 @@ class ClusterItemComponent extends StatefulWidget {
   final String image;
 
   @override
-  State<ClusterItemComponent> createState() => _ClusterItemComponentState();
+  State<PerumahanItemComponent> createState() => _PerumahanItemComponentState();
 }
 
-class _ClusterItemComponentState extends State<ClusterItemComponent> {
+class _PerumahanItemComponentState extends State<PerumahanItemComponent> {
 
   Color getTypeColor(String type) {
     if(type == "PREMIUM") {

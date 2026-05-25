@@ -7,15 +7,15 @@ import "package:varindo_estate_management/components/texts/main_text_color_compo
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class LayananTabScreen extends StatefulWidget {
+class KomplainTabScreen extends StatefulWidget {
 
-  const LayananTabScreen({ super.key });
+  const KomplainTabScreen({ super.key });
 
   @override
-  State<LayananTabScreen> createState() => _LayananTabScreenState();
+  State<KomplainTabScreen> createState() => _KomplainTabScreenState();
 }
 
-class _LayananTabScreenState extends State<LayananTabScreen> {
+class _KomplainTabScreenState extends State<KomplainTabScreen> {
     
   final List<Map<String, dynamic>> layananList = [
     {
@@ -78,11 +78,11 @@ class _LayananTabScreenState extends State<LayananTabScreen> {
                   color: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.4)
                 ),
                 child: Center(
-                  child: Icon(Iconsax.element_25),
+                  child: Icon(Iconsax.note_remove5),
                 ),
               ),
               SizedBox(width: 12,),
-              MainTextComponent(text: "Layanan Jasa", fontSize: 24, fontWeight: FontWeight.w600)
+              MainTextComponent(text: "Komplain", fontSize: 22, fontWeight: FontWeight.w600)
             ],
           ),
           SizedBox(height: 24,),

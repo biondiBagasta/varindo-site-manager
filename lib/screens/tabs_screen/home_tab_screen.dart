@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg_provider/flutter_svg_provider.dart";
+import "package:go_router/go_router.dart";
 import "package:iconsax/iconsax.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
-import "package:varindo_estate_management/components/others/cluster_item_component.dart";
+import "package:varindo_estate_management/components/others/perumahan_item_component.dart";
 import "package:varindo_estate_management/components/others/varindo_ringkasan_unit_item_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
@@ -192,6 +193,29 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
   }
 
   Widget buildContent() {
+    final List<Map<String, dynamic>> ringkasanUnitList = [
+      {
+        "status": "AVAIABLE",
+        "units": 100,
+        "percent": 100
+      },
+      {
+        "status": "ON-PROCESS ADMINISTRASI",
+        "units": 24,
+        "percent": 20
+      },
+      {
+        "status": "ON-PROCESS PEMBANGUNAN",
+        "units": 58,
+        "percent": 60
+      },
+      {
+        "status": "SELESAI",
+        "units": 142,
+        "percent": 100
+      },
+    ];
+    
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -229,22 +253,26 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               fontWeight: FontWeight.w600
             ),
             SizedBox(height: 18,),
-            VarindoRingkasanUnitItemComponent(
-              status: "ON-PROCESS ADMINISTRASI", 
-              unit: 24, 
-              progressPercentage: 20
-            ),
-            SizedBox(height: 12,),
-            VarindoRingkasanUnitItemComponent(
-              status: "ON-PROCESS PEMBANGUNAN", 
-              unit: 58, 
-              progressPercentage: 60
-            ),
-            SizedBox(height: 12,),
-            VarindoRingkasanUnitItemComponent(
-              status: "SELESAI", 
-              unit: 142, 
-              progressPercentage: 100
+            GridView.builder(
+              itemCount: ringkasanUnitList.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 18,
+                mainAxisSpacing: 18,
+        
+                // tinggi fix
+                mainAxisExtent: 140,
+              ),
+              itemBuilder: (context, index) {
+        
+                return VarindoRingkasanUnitItemComponent(
+                  status: ringkasanUnitList[index]["status"], 
+                  unit: ringkasanUnitList[index]["units"], 
+                  progressPercentage: ringkasanUnitList[index]["percent"]
+                );
+              },
             ),
             SizedBox(height: 24,),
             Row(
@@ -252,7 +280,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 MainTextComponent(
-                  text: "Daftar Cluster", 
+                  text: "Daftar Perumahan", 
                   fontSize: 16, 
                   fontWeight: FontWeight.w600,
                   isWhite: false,
@@ -266,38 +294,44 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
               ],
             ),
             SizedBox(height: 18,),
-            ClusterItemComponent(
+            PerumahanItemComponent(
               name: "Grand Natura", 
               location: "Jl. Raya Mataram", 
               type: "PREMIUM", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {
-
+                context.pushNamed("perumahan-detail", extra: {
+                  "perumahanName": "Grand Natura"
+                });
               }, 
               image: "https://picture.rumah123.com/r123-images/1080x720-fit/customer/1954025/46837d7dd9b82823bba6acd7588bf6a3.jpg?noWatermark"
             ),
             SizedBox(height: 12,),
-            ClusterItemComponent(
+            PerumahanItemComponent(
               name: "Gardenia Raya", 
               location: "Jl. Gardenia Raya", 
               type: "RESIDENTICAL", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {
-
+                context.pushNamed("perumahan-detail", extra: {
+                  "perumahanName": "Gardenia Raya"
+                });
               }, 
               image: "https://varindohome.com/wp-content/uploads/GERBANG-GARDENIA.jpg"
             ),
             SizedBox(height: 12,),
-            ClusterItemComponent(
+            PerumahanItemComponent(
               name: "Taman Mandali", 
               location: "Jl. Raya Mataram", 
               type: "SUBURBAN", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {
-
+                context.pushNamed("perumahan-detail", extra: {
+                  "perumahanName": "Taman Mandali"
+                });
               }, 
               image: "https://picture.rumah123.com/r123-images/1080x720-fit/customer/1954025/ba9e59161a3af20e9723d2fbd835357e.jpg?noWatermark"
             ),

@@ -32,7 +32,7 @@ class DetailClusterScreen extends StatelessWidget {
               length: 2,
               initialIndex: 0,
               child: Padding(
-                padding: EdgeInsetsGeometry.all(18),
+                padding: EdgeInsets.all(18),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -163,8 +163,8 @@ class DetailClusterScreen extends StatelessWidget {
                                 typePengerjaan: "TERSEDIA", 
                                 progressPercent: 0,
                                 onTap: () {
-                                  context.pushNamed("detail-cluster-unit", extra: {
-                                    "unitName": "A-12"
+                                  context.pushNamed("detail-unit-approved", extra: {
+                                    "unitName": "E-05"
                                   });
                                 },
                               ),

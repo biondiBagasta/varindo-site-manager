@@ -4,8 +4,8 @@ import "package:iconsax/iconsax.dart";
 import "package:varindo_estate_management/components/appbars/custom_light_only_appbars.dart";
 import "package:varindo_estate_management/cubit/bottom_navigation_bar_cubit.dart";
 import "package:varindo_estate_management/locator.dart";
-import "package:varindo_estate_management/screens/tabs_screen/cluster_tab_screen.dart";
-import "package:varindo_estate_management/screens/tabs_screen/layanan_tab_screen.dart";
+import "package:varindo_estate_management/screens/tabs_screen/perumahan_tab_screen.dart";
+import "package:varindo_estate_management/screens/tabs_screen/komplain_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/home_tab_screen.dart";
 import "package:varindo_estate_management/screens/tabs_screen/profile_tab_screen.dart";
 import "package:varindo_estate_management/utils/utils.dart";
@@ -22,8 +22,8 @@ class _MainScreenState extends State<MainScreen> {
 
   final screenTabList = [
     HomeTabScreen(),
-    ClusterTabScreen(),
-    LayananTabScreen(),
+    PerumahanTabScreen(),
+    KomplainTabScreen(),
     ProfileTabScreen(),
   ];
 
@@ -65,11 +65,11 @@ class _MainScreenState extends State<MainScreen> {
               NavigationDestination(
                 selectedIcon: Icon(Iconsax.grid_35, color: Colors.white,),
                 icon: Icon(Iconsax.grid_3), 
-                label: "Cluster"
+                label: "Perumahan"
               ),
               NavigationDestination(
-                selectedIcon: Icon(Icons.groups_2, color: Colors.white,),
-                icon: Icon(Icons.groups_2_outlined), 
+                selectedIcon: Icon(Iconsax.note_remove5, color: Colors.white,),
+                icon: Icon(Iconsax.note_remove), 
                 label: "Komplain"
               ),
               NavigationDestination(

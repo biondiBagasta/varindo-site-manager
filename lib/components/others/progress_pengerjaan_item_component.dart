@@ -69,7 +69,7 @@ class ProgressPengerjaanItemComponent extends StatelessWidget {
                     ],
                   ),
                   ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(12),
+                    borderRadius: BorderRadius.circular(12),
                     child: CachedNetworkImage(
                       imageUrl: image,
                       width: 64,

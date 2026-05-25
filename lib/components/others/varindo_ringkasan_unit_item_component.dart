@@ -25,6 +25,7 @@ class VarindoRingkasanUnitItemComponent extends StatelessWidget {
         padding: EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MainTextComponent(text: status, fontSize: 14, fontWeight: FontWeight.w400),
             SizedBox(

@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:varindo_estate_management/screens/auth/sign_in_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_cluster_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_cluster_unit_screen.dart';
+import 'package:varindo_estate_management/screens/main/detail_unit_approved_screen.dart';
+import 'package:varindo_estate_management/screens/main/perumahan_detail_screen.dart';
+import 'package:varindo_estate_management/screens/main/update_unit_progress_screen.dart';
 import 'package:varindo_estate_management/screens/main_screen.dart';
 import 'package:varindo_estate_management/splash_screen.dart';
 
@@ -50,6 +53,33 @@ class AppRouter {
               final extra = state.extra as Map<dynamic, dynamic>;
               final unitName = extra["unitName"] as String;
               return DetailClusterUnitScreen(unitName: unitName);
+            }
+          ),
+          GoRoute(
+            path: "detail-unit-approved",
+            name: "detail-unit-approved",
+            builder: (context, state) {
+              final extra = state.extra as Map<dynamic, dynamic>;
+              final unitName = extra["unitName"] as String;
+              return DetailUnitApprovedScreen(unitName: unitName);
+            }
+          ),
+          GoRoute(
+            path: "perumahan-detail",
+            name: "perumahan-detail",
+            builder: (context, state) {
+              final extra = state.extra as Map<dynamic, dynamic>;
+              final perumahanName = extra["perumahanName"] as String;
+              return PerumahanDetailScreen(perumahanName: perumahanName);
+            }
+          ),
+          GoRoute(
+            path: "update-unit-progress",
+            name: "update-unit-progress",
+            builder: (context, state) {
+              final extra = state.extra as Map<dynamic, dynamic>;
+              final progressName = extra["progressName"] as String;
+              return UpdateUnitProgressScreen(progressName: progressName);
             }
           )
         ]
