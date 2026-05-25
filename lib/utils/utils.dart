@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:intl/intl.dart';
 
 const kPrimaryColor = "#315C49";
@@ -11,6 +12,7 @@ const kGradientColor2 = "#3EB24D";
 const kGradientColor3 = "#42B44D";
 const kLightTextColor ="#6B7280";
 const kSuccessColor = "#1abc9c";
+const kErrorColor = "#c5000f";
 
 const kTextColor = "#2d3436";
 
@@ -98,4 +100,30 @@ String formatDateToIndonesian(DateTime date) {
     'd MMMM yyyy',
     'id_ID',
   ).format(DateTime.parse('2026-05-27 00:00:00.000'));
+}
+
+Future<CroppedFile?> cropFileFunction(String path) {
+  return ImageCropper().cropImage(
+    sourcePath: path,
+    uiSettings: [
+      AndroidUiSettings(
+        lockAspectRatio: true,
+        toolbarTitle: 'Cropper',
+        toolbarColor: HexColor.fromHex(kPrimaryColor),
+        toolbarWidgetColor: Colors.white,
+        initAspectRatio: CropAspectRatioPreset.square,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+        ],
+      ),
+      IOSUiSettings(
+        title: 'Cropper',
+        aspectRatioLockEnabled: true,
+        aspectRatioLockDimensionSwapEnabled: false,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square, // IMPORTANT: iOS supports only one custom aspect ratio in preset list
+        ],
+      ),
+    ],
+  );
 }

@@ -1,11 +1,20 @@
+import "dart:io";
+
+import "package:camera/camera.dart";
 import "package:dotted_border/dotted_border.dart";
 import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:go_router/go_router.dart";
 import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:percent_indicator/linear_percent_indicator.dart";
 import "package:varindo_estate_management/components/appbars/custom_appbar_back_light.dart";
 import "package:varindo_estate_management/components/buttons/button_component.dart";
+import "package:varindo_estate_management/components/camera/camera_back_screen.dart";
+import "package:varindo_estate_management/components/camera/show_image_dialog.dart";
 import "package:varindo_estate_management/components/fields/textarea_only_component.dart";
+import "package:varindo_estate_management/components/snackbars/show_error_snackbar.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
+import "package:varindo_estate_management/cubit/update_unit_progress_screen_cubit.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
 class UpdateUnitProgressScreen extends StatefulWidget {
@@ -24,10 +33,91 @@ class _UpdateUnitProgressScreenState extends State<UpdateUnitProgressScreen> {
 
   bool selectedSwitch = false;
 
+  late final CameraController _cameraController;
+
+  @override
+  void initState() {
+    availableCameras().then((cameras) {
+      _cameraController = CameraController(
+        cameras[0], 
+        ResolutionPreset.medium
+      );
+
+      // _cameraController.initialize().then((initalize) {
+      //   if(context.mounted) {
+      //     return;
+      //   }
+      // }).catchError((Object e) {
+      //   if (e is CameraException) {
+      //     switch (e.code) {
+      //       case 'CameraAccessDenied':
+      //         // Handle access errors here.
+      //         break;
+      //       default:
+      //         // Handle other errors here.
+      //         break;
+      //     }
+      //   }
+      // });
+    });
+
+    super.initState();
+  }
+
   @override
   void dispose() {
+    _cameraController.dispose();
     catatanController.dispose();
     super.dispose();
+  }
+
+  void openCamera() {
+    final updateUnitProgressScreenCubit = context.read<UpdateUnitProgressScreenCubit>();
+
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return FutureBuilder(
+          future: _cameraController.initialize(), 
+          builder: (context, snapshot) {
+            if(snapshot.connectionState == ConnectionState.done) {
+              if(snapshot.hasError) {
+                if(context.mounted) {
+                  if (snapshot.error is CameraException) {
+                    showErrorSnackBar(context, "ERROR", "Anda harus mengizinkan applikasi untuk mengakses kamera anda.");
+                  }
+                }
+
+                return const SizedBox();
+              } else {
+                return CameraBackScreen(
+                  cameraController: _cameraController,
+                  onTakePicture: () async {
+                    final file = await _cameraController.takePicture();
+                    
+                    final filePath = file.path;
+
+                    if(filePath.isNotEmpty) {
+                      final croppedFile = await cropFileFunction(filePath);
+
+                      if(croppedFile != null) {
+                        final xFile = XFile(croppedFile.path);
+                        updateUnitProgressScreenCubit.updateState(true, File(xFile.path));
+                        if(context.mounted) {
+                          context.pop();
+                        }
+                      }
+                    }
+                  },
+                );
+              }
+            } else {
+              return const SizedBox();
+            }
+          }
+        );
+      }
+    );
   }
 
   @override
@@ -137,39 +227,101 @@ class _UpdateUnitProgressScreenState extends State<UpdateUnitProgressScreen> {
                               ],
                             ),
                             SizedBox(height: 18,),
-                            DottedBorder(
-                              options: RoundedRectDottedBorderOptions(
-                                color: Colors.grey,
-                                strokeWidth: 1.5,
-                                dashPattern: [8, 4],
-                                radius: Radius.circular(12)  
-                              ),
-                              child: Container(
-                                padding: EdgeInsets.all(18),
-                                decoration: BoxDecoration(
-                                  color: HexColor.fromHex(kBackgroundColor),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 36,
-                                      backgroundColor: Colors.black12,
-                                      child: Icon(LucideIcons.camera, size: 36,),
+                            BlocBuilder<UpdateUnitProgressScreenCubit, UpdateUnitProgressScreenState>(
+                              builder: (_, state) {
+                                if(state.isAlreadyTakenPhoto) {
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          showFileImageDialog(context, state.fotoFile);
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(12),
+                                          child: Image.file(
+                                            state.fotoFile,
+                                            width: 180,
+                                            height: 180,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 18,),
+                                      GestureDetector(
+                                        onTap: () {
+                                          openCamera();
+                                        },
+                                        child: DottedBorder(
+                                          options: RoundedRectDottedBorderOptions(
+                                            color: Colors.grey,
+                                            strokeWidth: 1.5,
+                                            dashPattern: [8, 4],
+                                            radius: Radius.circular(12)  
+                                          ),
+                                          child: Container(
+                                            width: constantScreenWidth,
+                                            padding: EdgeInsets.all(12),
+                                            decoration: BoxDecoration(
+                                              color: HexColor.fromHex(kBackgroundColor),
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(LucideIcons.camera),
+                                                SizedBox(width: 6,),
+                                                MainTextComponent(text: "Ganti Foto", fontSize: 14, fontWeight: FontWeight.w500)
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  );
+                                } else {
+                                  return DottedBorder(
+                                    options: RoundedRectDottedBorderOptions(
+                                      color: Colors.grey,
+                                      strokeWidth: 1.5,
+                                      dashPattern: [8, 4],
+                                      radius: Radius.circular(12)  
                                     ),
-                                    SizedBox(height: 12,),
-                                    MainTextComponent(text: "Klik untuk Memotret", fontSize: 16, fontWeight: FontWeight.w600),
-                                    SizedBox(height: 6,),
-                                    MainTextComponent(
-                                      textAlign: TextAlign.center,
-                                      text: "Pastikan sambungan semen dan pemandu peratan terlihat jelas di bingkai.", 
-                                      fontSize: 14, 
-                                      fontWeight: FontWeight.w400
-                                    )
-                                  ],
-                                ),
-                              ),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        openCamera();
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(18),
+                                        decoration: BoxDecoration(
+                                          color: HexColor.fromHex(kBackgroundColor),
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 36,
+                                              backgroundColor: Colors.black12,
+                                              child: Icon(LucideIcons.camera, size: 36,),
+                                            ),
+                                            SizedBox(height: 12,),
+                                            MainTextComponent(text: "Klik untuk Memotret", fontSize: 16, fontWeight: FontWeight.w600),
+                                            SizedBox(height: 6,),
+                                            MainTextComponent(
+                                              textAlign: TextAlign.center,
+                                              text: "Pastikan sambungan semen dan pemandu peratan terlihat jelas di bingkai.", 
+                                              fontSize: 14, 
+                                              fontWeight: FontWeight.w400
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                              }
                             )
                           ],
                         ),
@@ -225,6 +377,8 @@ class _UpdateUnitProgressScreenState extends State<UpdateUnitProgressScreen> {
                             ),
                             SizedBox(width: 12,),
                             Switch(
+                              inactiveThumbColor: Colors.black,
+                              inactiveTrackColor: Colors.black12,
                               value: selectedSwitch, 
                               onChanged: (value) {
                                 setState(() {

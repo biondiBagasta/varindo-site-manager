@@ -19,7 +19,7 @@ class ButtonIconComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: constantScreenWidth,
-      height: 50,
+      height: height,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor

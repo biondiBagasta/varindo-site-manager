@@ -157,6 +157,7 @@ class _PeriksaKonstruksiItemComponentState
 
                 /// BUTTON 2
                 ButtonIconComponent(
+                  height: 40,
                   onPressed: () {
                     widget.onTapUpdate();
                   }, 

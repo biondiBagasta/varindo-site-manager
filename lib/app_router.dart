@@ -1,9 +1,13 @@
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:varindo_estate_management/cubit/komplain_create_screen_cubit.dart';
+import 'package:varindo_estate_management/cubit/update_unit_progress_screen_cubit.dart';
 import 'package:varindo_estate_management/screens/auth/sign_in_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_cluster_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_cluster_unit_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_unit_approved_screen.dart';
+import 'package:varindo_estate_management/screens/main/komplain_create_screen.dart';
 import 'package:varindo_estate_management/screens/main/perumahan_detail_screen.dart';
 import 'package:varindo_estate_management/screens/main/update_unit_progress_screen.dart';
 import 'package:varindo_estate_management/screens/main_screen.dart';
@@ -79,9 +83,22 @@ class AppRouter {
             builder: (context, state) {
               final extra = state.extra as Map<dynamic, dynamic>;
               final progressName = extra["progressName"] as String;
-              return UpdateUnitProgressScreen(progressName: progressName);
+              return BlocProvider(
+                create: (_) => UpdateUnitProgressScreenCubit(),
+                child: UpdateUnitProgressScreen(progressName: progressName),
+              );
             }
-          )
+          ),
+          GoRoute(
+            path: "komplain-create",
+            name: "komplain-create",
+            builder: (context, state) {
+              return BlocProvider(
+                create: (_) => KomplainCreateScreenCubit(),
+                child: KomplainCreateScreen(),
+              );
+            }
+          ),
         ]
       )
     ]

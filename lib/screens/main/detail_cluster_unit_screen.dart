@@ -73,113 +73,107 @@ class _DetailClusterUnitScreenState extends State<DetailClusterUnitScreen> {
                     SizedBox(
                       height: 24,
                     ),
-                    Row(
+                    GridView(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisExtent: 100,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 18
+                      ),
                       children: [
-                        Expanded(
-                          child: Card(
-                            color: Colors.white,
-                            surfaceTintColor: Colors.white,
-                            clipBehavior: Clip.antiAlias,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MainTextComponent(text: "LUAS TANAH", fontSize: 14, fontWeight: FontWeight.w400),
-                                  SizedBox(height: 6,),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      MainTextComponent(text: "120", fontSize: 22, fontWeight: FontWeight.w600),
-                                      SizedBox(width: 4,),
-                                      MainTextComponent(text: "sqm", fontSize: 16, fontWeight: FontWeight.w500,)
-                                    ],
-                                  )
-                                ],
-                              ),
+                        Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
+                          clipBehavior: Clip.antiAlias,
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainTextComponent(text: "LUAS TANAH", fontSize: 14, fontWeight: FontWeight.w400),
+                                SizedBox(height: 6,),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    MainTextComponent(text: "120", fontSize: 22, fontWeight: FontWeight.w600),
+                                    SizedBox(width: 4,),
+                                    MainTextComponent(text: "sqm", fontSize: 16, fontWeight: FontWeight.w500,)
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                         ),
-                        SizedBox(width: 12,),
-                        Expanded(
-                          child: Card(
-                            color: Colors.white,
-                            surfaceTintColor: Colors.white,
-                            clipBehavior: Clip.antiAlias,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MainTextComponent(text: "TIPE", fontSize: 14, fontWeight: FontWeight.w400),
-                                  SizedBox(height: 6,),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      MainTextComponent(text: "36", fontSize: 22, fontWeight: FontWeight.w600),
-                                      SizedBox(width: 4,),
-                                      MainTextComponent(text: "sqm", fontSize: 16, fontWeight: FontWeight.w500,)
-                                    ],
-                                  )
-                                ],
-                              ),
+                        Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
+                          clipBehavior: Clip.antiAlias,
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainTextComponent(text: "TIPE", fontSize: 14, fontWeight: FontWeight.w400),
+                                SizedBox(height: 6,),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    MainTextComponent(text: "36", fontSize: 22, fontWeight: FontWeight.w600),
+                                    SizedBox(width: 4,),
+                                    MainTextComponent(text: "sqm", fontSize: 16, fontWeight: FontWeight.w500,)
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 18,),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Card(
-                            color: Colors.white,
-                            surfaceTintColor: Colors.white,
-                            clipBehavior: Clip.antiAlias,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MainTextComponent(text: "STATUS SITE", fontSize: 14, fontWeight: FontWeight.w400),
-                                  SizedBox(height: 6,),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18),
-                                      color: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.4)
-                                    ),
-                                    child: MainTextComponent(text: "Available", fontSize: 12, fontWeight: FontWeight.w500),
+                        Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
+                          clipBehavior: Clip.antiAlias,
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainTextComponent(text: "STATUS SITE", fontSize: 14, fontWeight: FontWeight.w400),
+                                SizedBox(height: 6,),
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(18),
+                                    color: HexColor.fromHex(kPrimaryColor).withValues(alpha: 0.4)
                                   ),
-                                  SizedBox(height: 1,)
-                                ],
-                              ),
+                                  child: MainTextComponent(text: "Available", fontSize: 12, fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(height: 1,)
+                              ],
                             ),
                           ),
                         ),
-                        SizedBox(width: 12,),
-                        Expanded(
-                          child: Card(
-                            color: Colors.white,
-                            surfaceTintColor: Colors.white,
-                            clipBehavior: Clip.antiAlias,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MainTextComponent(text: "PROGRESS", fontSize: 14, fontWeight: FontWeight.w400),
-                                  SizedBox(height: 6,),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      MainTextComponent(text: "12", fontSize: 22, fontWeight: FontWeight.w600),
-                                      SizedBox(width: 4,),
-                                      MainTextComponent(text: "%", fontSize: 16, fontWeight: FontWeight.w500,)
-                                    ],
-                                  )
-                                ],
-                              ),
+                        Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
+                          clipBehavior: Clip.antiAlias,
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MainTextComponent(text: "PROGRESS", fontSize: 14, fontWeight: FontWeight.w400),
+                                SizedBox(height: 6,),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    MainTextComponent(text: "12", fontSize: 22, fontWeight: FontWeight.w600),
+                                    SizedBox(width: 4,),
+                                    MainTextComponent(text: "%", fontSize: 16, fontWeight: FontWeight.w500,)
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                         ),
