@@ -2,13 +2,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:varindo_estate_management/cubit/komplain_create_screen_cubit.dart';
+import 'package:varindo_estate_management/cubit/unit_serah_terima_screen_cubit.dart';
 import 'package:varindo_estate_management/cubit/update_unit_progress_screen_cubit.dart';
 import 'package:varindo_estate_management/screens/auth/sign_in_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_cluster_screen.dart';
-import 'package:varindo_estate_management/screens/main/detail_cluster_unit_screen.dart';
+import 'package:varindo_estate_management/screens/main/pengajuan_spmk_screen.dart';
 import 'package:varindo_estate_management/screens/main/detail_unit_approved_screen.dart';
-import 'package:varindo_estate_management/screens/main/komplain_create_screen.dart';
+import 'package:varindo_estate_management/screens/main/komplain/komplain_create_screen.dart';
+import 'package:varindo_estate_management/screens/main/komplain/komplain_detail_screen.dart';
 import 'package:varindo_estate_management/screens/main/perumahan_detail_screen.dart';
+import 'package:varindo_estate_management/screens/main/unit_serah_terima_screen.dart';
 import 'package:varindo_estate_management/screens/main/update_unit_progress_screen.dart';
 import 'package:varindo_estate_management/screens/main_screen.dart';
 import 'package:varindo_estate_management/splash_screen.dart';
@@ -51,12 +54,12 @@ class AppRouter {
             }
           ),
           GoRoute(
-            path: "detail-cluster-unit",
-            name: "detail-cluster-unit",
+            path: "pengajuan-spmk",
+            name: "pengajuan-spmk",
             builder: (context, state) {
               final extra = state.extra as Map<dynamic, dynamic>;
               final unitName = extra["unitName"] as String;
-              return DetailClusterUnitScreen(unitName: unitName);
+              return PengajuanSpmkScreen(unitName: unitName);
             }
           ),
           GoRoute(
@@ -96,6 +99,34 @@ class AppRouter {
               return BlocProvider(
                 create: (_) => KomplainCreateScreenCubit(),
                 child: KomplainCreateScreen(),
+              );
+            }
+          ),
+          GoRoute(
+            path: "komplain-detail",
+            name: "komplain-detail",
+            builder: (context, state) {
+              final extra = state.extra as Map<dynamic, dynamic>;
+              final siteName = extra["siteName"] as String;
+              final clusterName = extra["clusterName"] as String;
+              final homeNumber = extra["homeNumber"] as String;
+              final detailKomplain = extra["detailKomplain"] as String;
+              final image = extra["image"] as String;
+              return KomplainDetailScreen(
+                siteName: siteName, clusterName: clusterName, homeNumber: homeNumber, detailKomplain: detailKomplain,
+                image: image,
+              );
+            }
+          ),
+          GoRoute(
+            path: "unit-serah-terima",
+            name: "unit-serah-terima",
+            builder: (context, state) {
+              final extra = state.extra as Map<dynamic, dynamic>;
+              final unitName = extra["unitName"] as String;
+              return BlocProvider(
+                create: (_) => UnitSerahTerimaScreenCubit(),
+                child: UnitSerahTerimaScreen(unitName: unitName),
               );
             }
           ),

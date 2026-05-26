@@ -19,14 +19,12 @@ class ProgressPengerjaanItemComponent extends StatelessWidget {
   final Function onTap;
 
   static Color getColorByType(String type) {
-    if(type == "PONDASI") {
-      return HexColor.fromHex("#d35400");
-    } else if(type == "RANGKA") {
-      return HexColor.fromHex("#2c3e50");
-    } else if(type == "ATAP") {
-      return HexColor.fromHex(kSecondaryColor);
-    } else {
+    if(type == "SELESAI") {
+      return HexColor.fromHex(kSuccessColor);
+    } else if(type == "TERSEDIA") {
       return HexColor.fromHex(kInfoColor);
+    } else {
+      return Colors.black;
     }
   }
 

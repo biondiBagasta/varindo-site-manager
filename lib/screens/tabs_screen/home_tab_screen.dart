@@ -263,7 +263,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 mainAxisSpacing: 18,
         
                 // tinggi fix
-                mainAxisExtent: 140,
+                mainAxisExtent: 128,
               ),
               itemBuilder: (context, index) {
         
@@ -297,7 +297,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
             PerumahanItemComponent(
               name: "Grand Natura", 
               location: "Jl. Raya Mataram", 
-              type: "PREMIUM", 
+              type: "KOMERSIL", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {
@@ -311,7 +311,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
             PerumahanItemComponent(
               name: "Gardenia Raya", 
               location: "Jl. Gardenia Raya", 
-              type: "RESIDENTICAL", 
+              type: "SUBSIDI", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {
@@ -325,7 +325,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
             PerumahanItemComponent(
               name: "Taman Mandali", 
               location: "Jl. Raya Mataram", 
-              type: "SUBURBAN", 
+              type: "SUBSIDI", 
               totalUnit: 120, 
               terjual: 95, 
               onTap: () {

@@ -75,7 +75,7 @@ class _MainScreenState extends State<MainScreen> {
               NavigationDestination(
                 selectedIcon: Icon(Icons.account_circle, color: Colors.white,),
                 icon: Icon(Icons.account_circle_outlined), 
-                label: "Profil"
+                label: "Akun"
               ),
             ]
           );

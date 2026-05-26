@@ -25,21 +25,24 @@ class VarindoRingkasanUnitItemComponent extends StatelessWidget {
         padding: EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             MainTextComponent(text: status, fontSize: 14, fontWeight: FontWeight.w400),
-            SizedBox(
-              height: 12,
-            ),
-            MainTextComponent(text: "$unit Units", fontSize: 16, fontWeight: FontWeight.w600),
             SizedBox(height: 12,),
-            LinearPercentIndicator(
-              padding: EdgeInsets.zero,
-              lineHeight: 14.0,
-              percent: progressPercentage / 100,
-              backgroundColor: Colors.black12,
-              progressColor: HexColor.fromHex(kPrimaryColor),
-              barRadius: Radius.circular(12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MainTextComponent(text: "$unit Units", fontSize: 16, fontWeight: FontWeight.w600),
+                SizedBox(height: 8,),
+                LinearPercentIndicator(
+                  padding: EdgeInsets.zero,
+                  lineHeight: 8.0,
+                  percent: progressPercentage / 100,
+                  backgroundColor: Colors.black12,
+                  progressColor: HexColor.fromHex(kPrimaryColor),
+                  barRadius: Radius.circular(12),
+                ),
+              ],
             ),
           ],
         ),

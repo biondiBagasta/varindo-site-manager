@@ -9,9 +9,11 @@ import "package:lucide_icons_flutter/lucide_icons.dart";
 import "package:varindo_estate_management/components/appbars/custom_appbar_back_light.dart";
 import "package:varindo_estate_management/components/buttons/button_component.dart";
 import "package:varindo_estate_management/components/camera/camera_back_screen.dart";
+import "package:varindo_estate_management/components/camera/show_image_dialog.dart";
 import "package:varindo_estate_management/components/fields/regular_textarea_component.dart";
+import "package:varindo_estate_management/components/fields/regular_textfield_component.dart";
+import "package:varindo_estate_management/components/fields/search_textfield_component.dart";
 import "package:varindo_estate_management/components/snackbars/show_error_snackbar.dart";
-import "package:varindo_estate_management/components/texts/main_text_color_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/components/texts/main_text_dynamic_component.dart";
 import "package:varindo_estate_management/cubit/komplain_create_screen_cubit.dart";
@@ -27,6 +29,10 @@ class KomplainCreateScreen extends StatefulWidget {
 
 class _KomplainCreateScreenState extends State<KomplainCreateScreen> {
   final catatanController = TextEditingController();
+
+  final perumahanController = TextEditingController();
+  final clusterController = TextEditingController();
+  final homeNumberController = TextEditingController();
 
   bool selectedSwitch = false;
 
@@ -64,6 +70,10 @@ class _KomplainCreateScreenState extends State<KomplainCreateScreen> {
 
   @override
   void dispose() {
+    perumahanController.dispose();
+    clusterController.dispose();
+    homeNumberController.dispose();
+
     _cameraController.dispose();
     catatanController.dispose();
     super.dispose();
@@ -149,14 +159,13 @@ class _KomplainCreateScreenState extends State<KomplainCreateScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MainTextComponent(text: "Unit A-12", fontSize: 22, fontWeight: FontWeight.w600),
-                    SizedBox(height: 4,),
-                    MainTextColorComponent(
-                      text: "● Tahap : Komplain", 
-                      fontSize: 16, 
-                      fontWeight: FontWeight.w500, 
-                      color: HexColor.fromHex(kPrimaryColor)
-                    ),
+                    MainTextComponent(text: "Cari Perumahan", fontSize: 16, fontWeight: FontWeight.w600),
+                    SizedBox(height: 8,),
+                    SearchTextFieldComponent(hint: "Ketik nama perumahan", controller: perumahanController, validationMessage: ""),
+                    SizedBox(height: 12,),
+                    RegularTextFieldComponent(label: "Cluster", hint: "Ketik Cluster Perumahan", controller: clusterController, validationMessage: ""),
+                    SizedBox(height: 12,),
+                    RegularTextFieldComponent(label: "Nomor Perumahan", hint: "Ketik nomor perumahan", controller: homeNumberController, validationMessage: ""),
                     SizedBox(height: 24,),
                     GridView(
                       physics: NeverScrollableScrollPhysics(),
@@ -314,33 +323,38 @@ class _KomplainCreateScreenState extends State<KomplainCreateScreen> {
                                   for(var i = 0; i < state.fotoList.length; i++) Row(
                                     children: [
                                       GestureDetector(
-                                        child: Container(
-                                          padding: EdgeInsets.only(right: 1),
-                                          height: 120,
-                                          width: 120,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(12),
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: FileImage(state.fotoList[i])
-                                            )
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              GestureDetector(
+                                        onTap: () {
+                                          showFileImageDialog(context, state.fotoList[i]);
+                                        },
+                                        child: Stack(
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Container(
+                                              height: 120,
+                                              width: 120,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(12),
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: FileImage(state.fotoList[i])
+                                                )
+                                              ),
+                                            ),
+                                            Positioned(
+                                              right: -8,
+                                              top: -8,
+                                              child: GestureDetector(
                                                 onTap: () {
                                                   removePhoto(i);
                                                 },
                                                 child: CircleAvatar(
-                                                  radius: 18,
+                                                  radius: 16,
                                                   backgroundColor: Colors.black12,
-                                                  child: Icon(LucideIcons.x, color: Colors.white,),
+                                                  child: Icon(LucideIcons.x, color: HexColor.fromHex(kErrorColor),),
                                                 ),
-                                              )
-                                            ],
-                                          ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       SizedBox(width: 12,)

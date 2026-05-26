@@ -12,17 +12,17 @@ import "package:varindo_estate_management/components/texts/main_text_color_compo
 import "package:varindo_estate_management/components/texts/main_text_component.dart";
 import "package:varindo_estate_management/utils/utils.dart";
 
-class DetailClusterUnitScreen extends StatefulWidget {
+class PengajuanSpmkScreen extends StatefulWidget {
 
-  const DetailClusterUnitScreen({ super.key, required this.unitName });
+  const PengajuanSpmkScreen({ super.key, required this.unitName });
 
   final String unitName;
 
   @override
-  State<DetailClusterUnitScreen> createState() => _DetailClusterUnitScreenState();
+  State<PengajuanSpmkScreen> createState() => _PengajuanSpmkScreenState();
 }
 
-class _DetailClusterUnitScreenState extends State<DetailClusterUnitScreen> {
+class _PengajuanSpmkScreenState extends State<PengajuanSpmkScreen> {
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
   final estimasiController = TextEditingController();
@@ -43,7 +43,7 @@ class _DetailClusterUnitScreenState extends State<DetailClusterUnitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomLAppbarBackLight(title: "Detail Unit"),
+      appBar: CustomLAppbarBackLight(title: "Pengajuan SPMK"),
       body: SafeArea(
         child: Material(
           color: Colors.white,

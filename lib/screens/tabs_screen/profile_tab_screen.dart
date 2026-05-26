@@ -68,11 +68,11 @@ class ProfileTabScreen extends StatelessWidget {
                             SizedBox(height: 4,),
                             Row(
                               children: [
-                                Icon(LucideIcons.mapPin, size: 18, color: Colors.red,),
+                                Icon(LucideIcons.userStar, size: 18),
                                 SizedBox(width: 6,),
                                 Expanded(
                                   child: MainTextComponent(
-                                    text: "Blok Asterdea Blok A.12, Grand Natura", 
+                                    text: "Site Manager", 
                                     fontSize: 12, 
                                     fontWeight: FontWeight.w400,
                                     maxLines: 1,
@@ -84,56 +84,6 @@ class ProfileTabScreen extends StatelessWidget {
                           ],
                         )
                       )
-                    ],
-                  ),
-                  SizedBox(height: 6,),
-                  Divider(),
-                  SizedBox(height: 6,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(LucideIcons.building2, color: HexColor.fromHex(kPrimaryColor), size: 36,),
-                          SizedBox(width: 8,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              MainTextComponent(text: "Properti", fontSize: 12, fontWeight: FontWeight.w400),
-                              MainTextComponent(text: "3", fontSize: 16, fontWeight: FontWeight.w600)
-                            ],
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(LucideIcons.users, color: Colors.blueAccent, size: 36,),
-                          SizedBox(width: 8,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              MainTextComponent(text: "Downline", fontSize: 12, fontWeight: FontWeight.w400),
-                              MainTextComponent(text: "10", fontSize: 16, fontWeight: FontWeight.w600)
-                            ],
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(LucideIcons.coins, color: Colors.orange, size: 36,),
-                          SizedBox(width: 8,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              MainTextComponent(text: "Point", fontSize: 12, fontWeight: FontWeight.w400),
-                              MainTextComponent(text: "1000", fontSize: 16, fontWeight: FontWeight.w600)
-                            ],
-                          )
-                        ],
-                      ),
                     ],
                   ),
                 ],
@@ -167,42 +117,7 @@ class ProfileTabScreen extends StatelessWidget {
                             label: "Ganti Sever", 
                             iconColor: HexColor.fromHex(kInfoColor),
                             onTap: () {},
-                          ),
-                          Divider(),
-                          AccountMenuSectionComponent(
-                            icon: LucideIcons.tag, 
-                            label: "Daftar Harga PPOB", 
-                            iconColor: Colors.green,
-                            onTap: () {},
-                          ),
-                          Divider(),
-                          AccountMenuSectionComponent(
-                            icon: LucideIcons.users, 
-                            label: "Daftar Downline",
-                            onTap: () {}, 
-                            iconColor: Colors.blueAccent
-                          ),
-                          Divider(),
-                          AccountMenuSectionComponent(
-                            icon: LucideIcons.keyRound, 
-                            label: "Ganti Pin", 
-                            iconColor: Colors.orange,
-                            onTap: () {},
-                          ),
-                          Divider(),
-                          AccountMenuSectionComponent(
-                            icon: LucideIcons.bluetooth, 
-                            label: "Connect Printer", 
-                            iconColor: HexColor.fromHex("#0077FC"),
-                            onTap: () {},
-                          ),
-                          Divider(),
-                          AccountMenuSectionComponent(
-                            icon: LucideIcons.printer, 
-                            label: "Atur Struk", 
-                            iconColor: Colors.black,
-                            onTap: () {},
-                          ),
+                          ),                        
                           Divider(),
                           AccountMenuSectionComponent(
                             icon: LucideIcons.fingerprintPattern, 
