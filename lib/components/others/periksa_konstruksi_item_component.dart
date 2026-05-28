@@ -147,9 +147,9 @@ class _PeriksaKonstruksiItemComponentState
                   onPressed: () {
                     widget.onTapDetail();
                   }, 
-                  label: "Lihat Detail", 
+                  label: "Update", 
                   buttonColor: HexColor.fromHex(kInfoColor), 
-                  icon: LucideIcons.eye, 
+                  icon: LucideIcons.squarePen, 
                   labelColor: HexColor.fromHex(kInfoColor)
                 ),
 
@@ -161,9 +161,9 @@ class _PeriksaKonstruksiItemComponentState
                   onPressed: () {
                     widget.onTapUpdate();
                   }, 
-                  label: "Update", 
+                  label: "Selaikan", 
                   buttonColor: HexColor.fromHex(kPrimaryColor), 
-                  icon: LucideIcons.squarePen
+                  icon: LucideIcons.check
                 )
               ],
             ),
